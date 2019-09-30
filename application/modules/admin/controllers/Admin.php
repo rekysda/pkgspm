@@ -110,7 +110,7 @@ class Admin extends CI_Controller
     }
     public function userlogin()
     {
-        $data['title'] = 'User Login';
+        $data['title'] = 'Users';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $this->load->model('Userlogin_model', 'userlogin');
@@ -119,7 +119,8 @@ class Admin extends CI_Controller
         $this->db->select("*");
         $this->db->from('user_role');
         $data['role'] = $this->db->get()->result_array();
-
+ 
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[user.username]');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[user.email]');
         $this->form_validation->set_rules('password', 'password', 'trim|required');
         $this->form_validation->set_rules('name', 'Full Name', 'required');
@@ -134,6 +135,7 @@ class Admin extends CI_Controller
             $this->load->view('themes/backend/footerajax');
         } else {
             $data = [
+                'username' => htmlspecialchars($this->input->post('username')),
                 'email' => htmlspecialchars($this->input->post('email')),
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'name' => htmlspecialchars($this->input->post('name')),
@@ -150,7 +152,7 @@ class Admin extends CI_Controller
 
     public function useredit($id)
     {
-        $data['title'] = 'User Login';
+        $data['title'] = 'Users';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $this->load->model('Userlogin_model', 'userlogin');

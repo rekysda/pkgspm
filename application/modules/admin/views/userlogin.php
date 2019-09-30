@@ -27,6 +27,13 @@
         <?php $role_idv = set_value('role_id'); ?>
 
         <form class="form-horizontal" action="<?php base_url('admin/userlogin') ?>" method="post" enctype="multipart/form-data">
+        <div class="form-group <?= form_error('username') ? 'has-error' : '' ?>">
+            <label for="username" class="col-sm-2 control-label">Username <span class="text-red">*</span></label>
+            <div class="col-sm-10">
+              <input class="form-control" type="text" name="username" value="<?= set_value('username'); ?>" />
+              <?= form_error('username', '<span class="help-block">', '</small>'); ?>
+            </div>
+          </div>
           <div class="form-group <?= form_error('email') ? 'has-error' : '' ?>">
             <label for="name" class="col-sm-2 control-label">Email <span class="text-red">*</span></label>
             <div class="col-sm-10">
@@ -92,6 +99,7 @@
             <thead>
               <tr>
                 <th>#</th>
+                <th>UserName</th>
                 <th>Full Name</th>
                 <th>Email</th>
                 <th>Role</th>
@@ -106,6 +114,7 @@
                 <?php $is_active = ($u['is_active'] == 1) ? '<span class="label label-success">Active</span>' : '<span class="label label-danger">Inactive</span>'; ?>
                 <tr>
                   <th><?= $i; ?></th>
+                  <td><?= $u['username']; ?></td>
                   <td><?= $u['name']; ?></td>
                   <td><?= $u['email']; ?></td>
                   <td><?= $u['role']; ?></td>

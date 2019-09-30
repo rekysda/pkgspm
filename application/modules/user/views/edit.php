@@ -22,6 +22,12 @@
             </div>
             <?= form_open_multipart('user/edit', 'class=form-horizontal'); ?>
             <div class="box-body">
+            <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label">Username</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="username" name="username" value="<?= $user['username']; ?>"readonly>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">

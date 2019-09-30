@@ -12,10 +12,10 @@ class Auth extends CI_Controller
 
 	public function index()
 	{
-		if ($this->session->userdata('email')) {
+		if ($this->session->userdata('username')) {
 			redirect('user');
 		}
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
 		if ($this->form_validation->run() == false) {
@@ -32,16 +32,17 @@ class Auth extends CI_Controller
 
 	private function _login()
 	{
-		$email = $this->input->post('email');
+		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 
-		$user = $this->db->get_where('user', ['email' => $email])->row_array();
+		$user = $this->db->get_where('user', ['username' => $username])->row_array();
 		if ($user) {
 			//usernya ada
 			if ($user['is_active'] == 1) {
 				//cek password
 				if (password_verify($password, $user['password'])) {
 					$data = [
+						'username' => $user['username'],
 						'email' => $user['email'],
 						'role_id' => $user['role_id'],
 						'nama' => $user['nama'],
@@ -58,11 +59,11 @@ class Auth extends CI_Controller
 					redirect('auth');
 				}
 			} else {
-				$this->session->set_flashdata('message', '<div class="alert alert-warning" role"alert">Email is not activated!</div>');
+				$this->session->set_flashdata('message', '<div class="alert alert-warning" role"alert">username is not activated!</div>');
 				redirect('auth');
 			}
 		} else {
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role"alert">Email is not Registered!</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role"alert">username is not Registered!</div>');
 			redirect('auth');
 		}
 	}
@@ -70,7 +71,7 @@ class Auth extends CI_Controller
 	public function registration()
 	{
 		is_registered_active();
-		if ($this->session->userdata('email')) {
+		if ($this->session->userdata('username')) {
 			redirect('user');
 		}
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
@@ -207,6 +208,7 @@ class Auth extends CI_Controller
 
 	public function logout()
 	{
+		$this->session->unset_userdata('username');
 		$this->session->unset_userdata('email');
 		$this->session->unset_userdata('role_id');
 		$this->session->unset_userdata('noformulir');

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 28 Sep 2019 pada 05.32
--- Versi Server: 5.6.16
--- PHP Version: 5.5.11
+-- Generation Time: 30 Sep 2019 pada 07.20
+-- Versi Server: 5.6.20
+-- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -25,15 +25,79 @@ USE `penilaiankinerjaguru`;
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `bank_jawab`
+--
+
+DROP TABLE IF EXISTS `bank_jawab`;
+CREATE TABLE IF NOT EXISTS `bank_jawab` (
+`id` int(11) NOT NULL,
+  `jawab` varchar(100) NOT NULL,
+  `skor` varchar(100) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data untuk tabel `bank_jawab`
+--
+
+INSERT INTO `bank_jawab` (`id`, `jawab`, `skor`) VALUES
+(1, 'Kurang', '1'),
+(2, 'Sedang', '2'),
+(3, 'Baik', '3'),
+(4, 'Istimewa', '4');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `bank_kategori`
+--
+
+DROP TABLE IF EXISTS `bank_kategori`;
+CREATE TABLE IF NOT EXISTS `bank_kategori` (
+`id` int(10) NOT NULL,
+  `kategori` varchar(100) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data untuk tabel `bank_kategori`
+--
+
+INSERT INTO `bank_kategori` (`id`, `kategori`) VALUES
+(1, 'Pengembangan Kurikulum'),
+(2, 'Kegiatan Pembelajaran yang Mendidik');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `bank_soal`
+--
+
+DROP TABLE IF EXISTS `bank_soal`;
+CREATE TABLE IF NOT EXISTS `bank_soal` (
+`id` int(10) NOT NULL,
+  `kategori_id` varchar(100) NOT NULL,
+  `soal` varchar(500) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data untuk tabel `bank_soal`
+--
+
+INSERT INTO `bank_soal` (`id`, `kategori_id`, `soal`) VALUES
+(1, '2', 'Guru melaksanakan aktivitas pembelajaran sesuai dengan rancangan yang telah disusun secara lengkap dan pelaksanaan aktivitas tersebut mengindikasikan bahwa guru mengerti tentang tujuannya'),
+(2, '1', 'Guru dapat menyusun silabus yang sesuai dengan kurikulum'),
+(4, '1', 'Guru merancang rencana pembelajaran yang sesuai dengan silabus untuk membahas materi ajar tertentu agar peserta didik dapat mencapai kompetensi dasar yang ditetapkan.');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `options`
 --
 
 DROP TABLE IF EXISTS `options`;
 CREATE TABLE IF NOT EXISTS `options` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
-  `value` longtext NOT NULL,
-  PRIMARY KEY (`id`)
+  `value` longtext NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
@@ -63,7 +127,7 @@ INSERT INTO `options` (`id`, `name`, `value`) VALUES
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
   `hp` varchar(50) NOT NULL,
@@ -71,8 +135,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(256) NOT NULL,
   `role_id` int(11) NOT NULL,
   `is_active` int(1) NOT NULL,
-  `date_created` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
@@ -90,10 +153,9 @@ INSERT INTO `user` (`id`, `name`, `email`, `hp`, `image`, `password`, `role_id`,
 
 DROP TABLE IF EXISTS `user_access_menu`;
 CREATE TABLE IF NOT EXISTS `user_access_menu` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
-  `menu_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `menu_id` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
@@ -117,10 +179,9 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 
 DROP TABLE IF EXISTS `user_access_submenu`;
 CREATE TABLE IF NOT EXISTS `user_access_submenu` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
-  `submenu_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `submenu_id` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=81 ;
 
 --
@@ -208,11 +269,10 @@ INSERT INTO `user_access_submenu` (`id`, `role_id`, `submenu_id`) VALUES
 
 DROP TABLE IF EXISTS `user_menu`;
 CREATE TABLE IF NOT EXISTS `user_menu` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `icon` varchar(255) DEFAULT NULL,
   `menu_id` varchar(50) NOT NULL,
-  `menu` varchar(128) NOT NULL,
-  PRIMARY KEY (`id`)
+  `menu` varchar(128) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
@@ -232,9 +292,8 @@ INSERT INTO `user_menu` (`id`, `icon`, `menu_id`, `menu`) VALUES
 
 DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE IF NOT EXISTS `user_role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `role` varchar(256) NOT NULL,
-  PRIMARY KEY (`id`)
+`id` int(11) NOT NULL,
+  `role` varchar(256) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
@@ -255,14 +314,13 @@ INSERT INTO `user_role` (`id`, `role`) VALUES
 
 DROP TABLE IF EXISTS `user_sub_menu`;
 CREATE TABLE IF NOT EXISTS `user_sub_menu` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL,
   `title` varchar(128) NOT NULL,
   `url` varchar(128) NOT NULL,
   `icon` varchar(128) NOT NULL,
   `sort` int(11) NOT NULL DEFAULT '1',
-  `is_active` int(1) NOT NULL,
-  PRIMARY KEY (`id`)
+  `is_active` int(1) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
@@ -287,11 +345,10 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `sort`, `i
 
 DROP TABLE IF EXISTS `user_token`;
 CREATE TABLE IF NOT EXISTS `user_token` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `email` varchar(128) NOT NULL,
   `token` varchar(128) NOT NULL,
-  `date_created` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -302,10 +359,9 @@ CREATE TABLE IF NOT EXISTS `user_token` (
 
 DROP TABLE IF EXISTS `web_setting`;
 CREATE TABLE IF NOT EXISTS `web_setting` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(512) NOT NULL,
-  `is_active` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `is_active` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
@@ -316,6 +372,146 @@ INSERT INTO `web_setting` (`id`, `name`, `is_active`) VALUES
 (1, 'signup_member', 1),
 (2, 'forgot_password', 1);
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `bank_jawab`
+--
+ALTER TABLE `bank_jawab`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bank_kategori`
+--
+ALTER TABLE `bank_kategori`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bank_soal`
+--
+ALTER TABLE `bank_soal`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `options`
+--
+ALTER TABLE `options`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_access_menu`
+--
+ALTER TABLE `user_access_menu`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_access_submenu`
+--
+ALTER TABLE `user_access_submenu`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_menu`
+--
+ALTER TABLE `user_menu`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_role`
+--
+ALTER TABLE `user_role`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_sub_menu`
+--
+ALTER TABLE `user_sub_menu`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_token`
+--
+ALTER TABLE `user_token`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_setting`
+--
+ALTER TABLE `web_setting`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `bank_jawab`
+--
+ALTER TABLE `bank_jawab`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `bank_kategori`
+--
+ALTER TABLE `bank_kategori`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `bank_soal`
+--
+ALTER TABLE `bank_soal`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `options`
+--
+ALTER TABLE `options`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `user_access_menu`
+--
+ALTER TABLE `user_access_menu`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `user_access_submenu`
+--
+ALTER TABLE `user_access_submenu`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=81;
+--
+-- AUTO_INCREMENT for table `user_menu`
+--
+ALTER TABLE `user_menu`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `user_role`
+--
+ALTER TABLE `user_role`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `user_sub_menu`
+--
+ALTER TABLE `user_sub_menu`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `user_token`
+--
+ALTER TABLE `user_token`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `web_setting`
+--
+ALTER TABLE `web_setting`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

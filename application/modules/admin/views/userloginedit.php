@@ -25,6 +25,12 @@
         <?php $role_idv = $getuserlogin['role_id']; ?>
 
         <form class="form-horizontal" action="<?php base_url('admin/useredit') ?>" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="username" class="col-sm-2 control-label">Username</label>
+            <div class="col-sm-10">
+              <input class="form-control " type="text" name="username" value="<?= $getuserlogin['username']; ?>" readonly />
+            </div>
+          </div>
           <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Email</label>
             <div class="col-sm-10">
@@ -100,6 +106,7 @@
             <thead>
               <tr>
                 <th>#</th>
+                <th>Username</th>
                 <th>Nama Lengkap</th>
                 <th>Email</th>
                 <th>Role</th>
@@ -113,6 +120,7 @@
               <?php foreach ($userlogin as $u) : ?>
                 <tr>
                   <th><?= $i; ?></th>
+                  <td><?= $u['username']; ?></td>
                   <td><?= $u['name']; ?></td>
                   <td><?= $u['email']; ?></td>
                   <td><?= $u['role']; ?></td>

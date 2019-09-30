@@ -1,6 +1,7 @@
 <!-- Login Baru -->
 <div class="login-box">
   <div class="login-logo">
+  <b><?= options('site_title') ?></b><br>
     <a href="<?= base_url(); ?>"><b>Welcome</b> Back!</a>
   </div>
   <!-- /.login-logo -->
@@ -10,10 +11,10 @@
     <?= $this->session->flashdata('message'); ?>
 
     <form class="user" method="post" action="<?= base_url('auth'); ?>">
-      <div class="form-group has-feedback <?= form_error('email') ? 'has-error' : '' ?>">
-        <input type="email" name="email" value="<?= set_value('email'); ?>" class="form-control" placeholder="Email">
+      <div class="form-group has-feedback <?= form_error('username') ? 'has-error' : '' ?>">
+        <input type="username" name="username" value="<?= set_value('username'); ?>" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-        <?= form_error('email', '<div class="text-danger">', '</div>') ?>
+        <?= form_error('username', '<div class="text-danger">', '</div>') ?>
       </div>
       <div class="form-group has-feedback <?= form_error('password') ? 'has-error' : '' ?>">
         <input type="password" name="password" value="<?= set_value('password'); ?>" class="form-control" placeholder="Password">

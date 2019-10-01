@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 01 Okt 2019 pada 06.29
+-- Generation Time: 01 Okt 2019 pada 06.35
 -- Versi Server: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -293,6 +293,19 @@ INSERT INTO `user_access_submenu` (`id`, `role_id`, `submenu_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `user_access_user`
+--
+
+DROP TABLE IF EXISTS `user_access_user`;
+CREATE TABLE IF NOT EXISTS `user_access_user` (
+`id` int(11) NOT NULL,
+  `user1_id` int(11) NOT NULL,
+  `user2_id` int(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `user_menu`
 --
 
@@ -461,6 +474,12 @@ ALTER TABLE `user_access_submenu`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_access_user`
+--
+ALTER TABLE `user_access_user`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user_menu`
 --
 ALTER TABLE `user_menu`
@@ -534,6 +553,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 ALTER TABLE `user_access_submenu`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=84;
+--
+-- AUTO_INCREMENT for table `user_access_user`
+--
+ALTER TABLE `user_access_user`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `user_menu`
 --

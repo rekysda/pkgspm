@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 30 Sep 2019 pada 07.20
+-- Generation Time: 01 Okt 2019 pada 06.29
 -- Versi Server: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `bank_jawab` (
 `id` int(11) NOT NULL,
   `jawab` varchar(100) NOT NULL,
   `skor` varchar(100) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data untuk tabel `bank_jawab`
@@ -55,7 +55,7 @@ DROP TABLE IF EXISTS `bank_kategori`;
 CREATE TABLE IF NOT EXISTS `bank_kategori` (
 `id` int(10) NOT NULL,
   `kategori` varchar(100) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data untuk tabel `bank_kategori`
@@ -129,6 +129,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
 `id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
+  `username` varchar(50) NOT NULL,
   `email` varchar(128) NOT NULL,
   `hp` varchar(50) NOT NULL,
   `image` varchar(128) NOT NULL,
@@ -136,14 +137,37 @@ CREATE TABLE IF NOT EXISTS `user` (
   `role_id` int(11) NOT NULL,
   `is_active` int(1) NOT NULL,
   `date_created` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `hp`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(3, 'Administrator', 'admin@admin.com', '', 'default.jpg', '$2y$10$xP5rx.6d0AasybhMP23yVeMTGKehXum1f88FqO3oL8tP0m5H5369m', 1, 1, 1555463755);
+INSERT INTO `user` (`id`, `name`, `username`, `email`, `hp`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
+(3, 'Administrator', 'superadmin', 'admin@admin.com', '', 'default.jpg', '$2y$10$xP5rx.6d0AasybhMP23yVeMTGKehXum1f88FqO3oL8tP0m5H5369m', 1, 1, 1555463755),
+(4, 'Guru 1', 'guru1', 'guru1@guru1.com', '', 'default.jpg', '$2y$10$VXL8dtAxV7w/HFjh6h61aOMk.Mdn9IXdHWmZFipHyosqeIRicjhym', 3, 1, 1569903545),
+(5, 'Guru 2', 'guru2', 'guru2@guru2.com', '', 'default.jpg', '$2y$10$s/Inr87j0Q4UCumYxVvrpOeL1oqYaDOTVWs2RizT1hdgZH87Ta2sC', 3, 1, 1569903586);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user_access_kategori`
+--
+
+DROP TABLE IF EXISTS `user_access_kategori`;
+CREATE TABLE IF NOT EXISTS `user_access_kategori` (
+`id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  `kategori_id` int(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+
+--
+-- Dumping data untuk tabel `user_access_kategori`
+--
+
+INSERT INTO `user_access_kategori` (`id`, `role_id`, `kategori_id`) VALUES
+(15, 1, 1),
+(16, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -156,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `user_access_menu` (
 `id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data untuk tabel `user_access_menu`
@@ -169,7 +193,9 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (5, 3, 2),
 (6, 3, 3),
 (7, 2, 14),
-(8, 1, 15);
+(8, 1, 15),
+(9, 1, 4),
+(10, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -182,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `user_access_submenu` (
 `id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   `submenu_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=81 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=84 ;
 
 --
 -- Dumping data untuk tabel `user_access_submenu`
@@ -259,7 +285,10 @@ INSERT INTO `user_access_submenu` (`id`, `role_id`, `submenu_id`) VALUES
 (77, 1, 71),
 (78, 1, 5),
 (79, 2, 72),
-(80, 1, 73);
+(80, 1, 73),
+(81, 1, 11),
+(82, 1, 12),
+(83, 1, 13);
 
 -- --------------------------------------------------------
 
@@ -273,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `user_menu` (
   `icon` varchar(255) DEFAULT NULL,
   `menu_id` varchar(50) NOT NULL,
   `menu` varchar(128) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data untuk tabel `user_menu`
@@ -282,7 +311,9 @@ CREATE TABLE IF NOT EXISTS `user_menu` (
 INSERT INTO `user_menu` (`id`, `icon`, `menu_id`, `menu`) VALUES
 (1, 'fa fa-fw fa-wrench', 'admin', 'Admin'),
 (2, 'fa fa-fw fa-users', 'user', 'User'),
-(3, 'fa fa-fw fa-navicon', 'menu', 'Menu');
+(3, 'fa fa-fw fa-navicon', 'menu', 'Menu'),
+(4, 'fa fa-fw fa-question', 'banksoal', 'BankSoal'),
+(5, 'fa fa-fw fa-lock', 'lock', 'Lock');
 
 -- --------------------------------------------------------
 
@@ -321,7 +352,7 @@ CREATE TABLE IF NOT EXISTS `user_sub_menu` (
   `icon` varchar(128) NOT NULL,
   `sort` int(11) NOT NULL DEFAULT '1',
   `is_active` int(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data untuk tabel `user_sub_menu`
@@ -335,7 +366,12 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `sort`, `i
 (5, 3, 'Submenu Management', 'menu/submenu', 'fa fa-fw fa-folder-open', 2, 1),
 (7, 1, 'Role', 'admin/role', 'fa fa-fw fa-user-secret', 1, 1),
 (8, 2, 'Change Password', 'user/changepassword', 'fa fa-fw fa-key', 1, 1),
-(9, 1, 'Users', 'admin/userlogin', 'fa fa-fw fa-users', 1, 1);
+(9, 1, 'Users', 'admin/userlogin', 'fa fa-fw fa-users', 1, 1),
+(10, 4, 'Kategori', 'banksoal/kategori', '', 1, 1),
+(11, 4, 'Soal', 'banksoal/soal', '', 2, 1),
+(12, 4, 'Jawab', 'banksoal/jawab', '', 3, 1),
+(13, 5, 'Role', 'lock/role', '', 1, 1),
+(14, 5, 'User', 'lock/user', '', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -407,6 +443,12 @@ ALTER TABLE `user`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_access_kategori`
+--
+ALTER TABLE `user_access_kategori`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
@@ -456,12 +498,12 @@ ALTER TABLE `web_setting`
 -- AUTO_INCREMENT for table `bank_jawab`
 --
 ALTER TABLE `bank_jawab`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `bank_kategori`
 --
 ALTER TABLE `bank_kategori`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `bank_soal`
 --
@@ -476,22 +518,27 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `user_access_kategori`
+--
+ALTER TABLE `user_access_kategori`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `user_access_submenu`
 --
 ALTER TABLE `user_access_submenu`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=81;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=84;
 --
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `user_role`
 --
@@ -501,7 +548,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `user_token`
 --

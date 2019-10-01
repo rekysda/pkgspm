@@ -354,3 +354,14 @@ function generatekodeinc4($table,$kodeawal,$kode) {
     $kd=$kodeawal.$kd;
     return $kd;
     }
+    function check_access_kategori($role_id, $kategori_id)
+    {
+        $ci = get_instance();
+        $ci->db->where('role_id', $role_id);
+        $ci->db->where('kategori_id', $kategori_id);
+        $result = $ci->db->get('user_access_kategori');
+    
+        if ($result->num_rows() > 0) {
+            return "checked='checked'";
+        }
+    }

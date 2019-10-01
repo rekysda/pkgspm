@@ -19,7 +19,9 @@ $(document).ready(function() {
       }
     })
   })
-  </script><script>
+  </script>
+  
+  <script>
   $('.form-check-inputsub').on('click', function() {
     const submenuid = $(this).data('submenu');
     const roleId = $(this).data('role');
@@ -36,7 +38,8 @@ $(document).ready(function() {
       }
     })
   })
-  </script><script>
+  </script>
+  <script>
   $('.form-check-input2').on('click', function() {
     const name = $(this).data('name');
     const is_active = $(this).data('is_active');
@@ -53,7 +56,26 @@ $(document).ready(function() {
       }
     })
   })
-  </script><script>
+  </script>
+   <script>
+  $('.form-check-input3').on('click', function() {
+    const kategoriId = $(this).data('kategori');
+    const roleId = $(this).data('role');
+
+    $.ajax({
+      url: "<?= base_url('lock/changeaccesskategori'); ?>",
+      type: 'post',
+      data: {
+        kategoriId: kategoriId,
+        roleId: roleId
+      },
+      success: function() {
+        document.location.href = "<?= base_url('lock/roleaccess/'); ?>"+ roleId;
+      }
+    })
+  })
+  </script>
+  <script>
   $('.form-controlweb').on('change', function() {
     const id = $(this).data('id');
     const value = $(this).val();

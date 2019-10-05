@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 05 Okt 2019 pada 08.46
+-- Generation Time: 05 Okt 2019 pada 08.53
 -- Versi Server: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -348,7 +348,7 @@ CREATE TABLE IF NOT EXISTS `user_access_user` (
   `asal_id` int(11) NOT NULL,
   `tujuan_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data untuk tabel `user_access_user`
@@ -359,7 +359,9 @@ INSERT INTO `user_access_user` (`id`, `asal_id`, `tujuan_id`) VALUES
 (19, 5, 4),
 (20, 3, 3),
 (21, 3, 4),
-(22, 3, 5);
+(22, 3, 5),
+(23, 4, 4),
+(24, 4, 5);
 
 -- --------------------------------------------------------
 
@@ -374,7 +376,7 @@ CREATE TABLE IF NOT EXISTS `user_menu` (
   `menu_id` varchar(50) NOT NULL,
   `menu` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data untuk tabel `user_menu`
@@ -385,7 +387,8 @@ INSERT INTO `user_menu` (`id`, `icon`, `menu_id`, `menu`) VALUES
 (2, 'fa fa-fw fa-users', 'user', 'User'),
 (3, 'fa fa-fw fa-navicon', 'menu', 'Menu'),
 (4, 'fa fa-fw fa-question', 'banksoal', 'BankSoal'),
-(5, 'fa fa-fw fa-lock', 'lock', 'Lock');
+(5, 'fa fa-fw fa-lock', 'lock', 'Lock'),
+(6, 'fa fa-fw fa-users', 'cbt', 'CBT');
 
 -- --------------------------------------------------------
 
@@ -426,7 +429,7 @@ CREATE TABLE IF NOT EXISTS `user_sub_menu` (
   `sort` int(11) NOT NULL DEFAULT '1',
   `is_active` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data untuk tabel `user_sub_menu`
@@ -445,7 +448,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `sort`, `i
 (11, 4, 'Soal', 'banksoal/soal', '', 2, 1),
 (12, 4, 'Jawab', 'banksoal/jawab', '', 3, 1),
 (13, 5, 'Role', 'lock/role', '', 1, 1),
-(14, 5, 'User', 'lock/user', '', 2, 1);
+(14, 5, 'User', 'lock/user', '', 2, 1),
+(15, 6, 'Penilaian', 'cbt/penilaian', '', 1, 1);
 
 -- --------------------------------------------------------
 

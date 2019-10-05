@@ -365,3 +365,15 @@ function generatekodeinc4($table,$kodeawal,$kode) {
             return "checked='checked'";
         }
     }
+
+    function check_access_user($asal_id, $tujuan_id)
+    {
+        $ci = get_instance();
+        $ci->db->where('asal_id', $asal_id);
+        $ci->db->where('tujuan_id', $tujuan_id);
+        $result = $ci->db->get('user_access_user');
+    
+        if ($result->num_rows() > 0) {
+            return "checked='checked'";
+        }
+    }

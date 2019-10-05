@@ -75,6 +75,24 @@ $(document).ready(function() {
     })
   })
   </script>
+     <script>
+  $('.form-check-input4').on('click', function() {
+    const asal_id = $(this).data('asal');
+    const tujuan_id = $(this).data('tujuan');
+
+    $.ajax({
+      url: "<?= base_url('lock/changeaccessuser'); ?>",
+      type: 'post',
+      data: {
+        asal_id: asal_id,
+        tujuan_id: tujuan_id
+      },
+      success: function() {
+        document.location.href = "<?= base_url('lock/roleuser/'); ?>"+ asal_id;
+      }
+    })
+  })
+  </script>
   <script>
   $('.form-controlweb').on('change', function() {
     const id = $(this).data('id');

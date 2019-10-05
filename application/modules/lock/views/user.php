@@ -38,7 +38,7 @@
                   <th scope="row"><?= $i; ?></th>
                   <td><?= $dt['username']; ?></td>
                   <td>
-                    <a href="<?= base_url('lock/role-user/') . $dt['id']; ?>" class="btn btn-success btn-xs">Access Question</a>
+                    <a href="<?= base_url('lock/roleuser/') . $dt['id']; ?>" class="btn btn-success btn-xs">Access User</a>
                   </td>
                 </tr>
                 <?php $i++; ?>

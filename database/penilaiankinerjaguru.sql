@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 01 Okt 2019 pada 06.35
--- Versi Server: 5.6.20
+-- Generation Time: Oct 05, 2019 at 05:19 AM
+-- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -25,7 +25,7 @@ USE `penilaiankinerjaguru`;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bank_jawab`
+-- Table structure for table `bank_jawab`
 --
 
 DROP TABLE IF EXISTS `bank_jawab`;
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `bank_jawab` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `bank_jawab`
+-- Dumping data for table `bank_jawab`
 --
 
 INSERT INTO `bank_jawab` (`id`, `jawab`, `skor`) VALUES
@@ -48,27 +48,33 @@ INSERT INTO `bank_jawab` (`id`, `jawab`, `skor`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bank_kategori`
+-- Table structure for table `bank_kategori`
 --
 
 DROP TABLE IF EXISTS `bank_kategori`;
 CREATE TABLE IF NOT EXISTS `bank_kategori` (
 `id` int(10) NOT NULL,
   `kategori` varchar(100) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data untuk tabel `bank_kategori`
+-- Dumping data for table `bank_kategori`
 --
 
 INSERT INTO `bank_kategori` (`id`, `kategori`) VALUES
-(1, 'Pengembangan Kurikulum'),
-(2, 'Kegiatan Pembelajaran yang Mendidik');
+(1, 'Kesetiaan'),
+(2, 'Prestasi Kerja'),
+(3, 'Tanggung Jawab'),
+(4, 'Ketaatan'),
+(5, 'Kejujuran'),
+(6, 'Kerjasama'),
+(7, 'Kedisiplinan'),
+(8, 'Kepemimpinan');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bank_soal`
+-- Table structure for table `bank_soal`
 --
 
 DROP TABLE IF EXISTS `bank_soal`;
@@ -76,21 +82,47 @@ CREATE TABLE IF NOT EXISTS `bank_soal` (
 `id` int(10) NOT NULL,
   `kategori_id` varchar(100) NOT NULL,
   `soal` varchar(500) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
--- Dumping data untuk tabel `bank_soal`
+-- Dumping data for table `bank_soal`
 --
 
 INSERT INTO `bank_soal` (`id`, `kategori_id`, `soal`) VALUES
-(1, '2', 'Guru melaksanakan aktivitas pembelajaran sesuai dengan rancangan yang telah disusun secara lengkap dan pelaksanaan aktivitas tersebut mengindikasikan bahwa guru mengerti tentang tujuannya'),
-(2, '1', 'Guru dapat menyusun silabus yang sesuai dengan kurikulum'),
-(4, '1', 'Guru merancang rencana pembelajaran yang sesuai dengan silabus untuk membahas materi ajar tertentu agar peserta didik dapat mencapai kompetensi dasar yang ditetapkan.');
+(5, '1', 'Mentaati peraturan sekolah'),
+(6, '1', 'Menjalankan kode etik sekolah'),
+(7, '1', 'Menerima dan menjalankan tugas dengan senang hati'),
+(8, '1', 'Hadir dan pulang tepat waktu'),
+(9, '2', 'Sebagian besar siswa mencapai nilai ketuntasan minimal'),
+(10, '2', 'Membawa siswa berprestasi dalam kejuaraan'),
+(11, '2', 'Kreatif dalam proses belajar mengajar'),
+(12, '2', 'Menjadi teladan bagi rekan kerja'),
+(13, '2', 'Berprestasi dalam bidang penelitian atau kejuaraan guru'),
+(14, '3', 'Menyelesaikan administrasi mengajar dengan lengkap dan benar'),
+(15, '3', 'Menyelesaikan pekerjaan dengan tuntas'),
+(16, '3', 'Mampu menjabarkan instruksi pimpinan dengan baik'),
+(17, '3', 'Menanggung resiko pekerjaan dan keputusan yang diambil'),
+(18, '4', 'Menerima tugas yang diberikan oleh pimpinan'),
+(19, '4', 'Mengkomunikasikan masalah dengan baik dengan pimpinan'),
+(20, '4', 'Bisa dipercaya dalam menerima tugas'),
+(21, '5', 'Jujur dalam perkataan dan pengelolaan keuangan'),
+(22, '5', 'Berani minta maaf jika berbuat salah'),
+(23, '5', 'Rendah hati dan tidak sombong'),
+(24, '6', 'Setia terhadap komitmen bersama'),
+(25, '6', 'mampu beradaptasi dan diterima pimpinan, rekan sejawat, dan siswa'),
+(26, '6', 'Menjadi pendengar yang baik'),
+(27, '7', 'Hadir dan pulang tepat waktu'),
+(28, '7', 'Masuk dan keluar kelas tepat waktu'),
+(29, '7', 'Menyerahkan administrasi mengajar tepat waktu'),
+(30, '7', 'Mentaati peraturan sekolah'),
+(31, '8', 'Menjadi teladan bagi siswa dan rekan kerja'),
+(32, '8', 'Memiliki sikap simpatik, sopan, bijaksana dan tidak emosional'),
+(33, '8', 'Memotivasi siswa berperilaku baik');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `options`
+-- Table structure for table `options`
 --
 
 DROP TABLE IF EXISTS `options`;
@@ -101,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `options` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
--- Dumping data untuk tabel `options`
+-- Dumping data for table `options`
 --
 
 INSERT INTO `options` (`id`, `name`, `value`) VALUES
@@ -122,7 +154,7 @@ INSERT INTO `options` (`id`, `name`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 DROP TABLE IF EXISTS `user`;
@@ -140,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `username`, `email`, `hp`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
@@ -151,7 +183,7 @@ INSERT INTO `user` (`id`, `name`, `username`, `email`, `hp`, `image`, `password`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_access_kategori`
+-- Table structure for table `user_access_kategori`
 --
 
 DROP TABLE IF EXISTS `user_access_kategori`;
@@ -159,20 +191,23 @@ CREATE TABLE IF NOT EXISTS `user_access_kategori` (
 `id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   `kategori_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
--- Dumping data untuk tabel `user_access_kategori`
+-- Dumping data for table `user_access_kategori`
 --
 
 INSERT INTO `user_access_kategori` (`id`, `role_id`, `kategori_id`) VALUES
-(15, 1, 1),
-(16, 1, 2);
+(17, 2, 1),
+(18, 2, 3),
+(19, 2, 4),
+(20, 2, 5),
+(21, 2, 6);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_access_menu`
+-- Table structure for table `user_access_menu`
 --
 
 DROP TABLE IF EXISTS `user_access_menu`;
@@ -183,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `user_access_menu` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
--- Dumping data untuk tabel `user_access_menu`
+-- Dumping data for table `user_access_menu`
 --
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
@@ -200,7 +235,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_access_submenu`
+-- Table structure for table `user_access_submenu`
 --
 
 DROP TABLE IF EXISTS `user_access_submenu`;
@@ -211,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `user_access_submenu` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=84 ;
 
 --
--- Dumping data untuk tabel `user_access_submenu`
+-- Dumping data for table `user_access_submenu`
 --
 
 INSERT INTO `user_access_submenu` (`id`, `role_id`, `submenu_id`) VALUES
@@ -293,7 +328,7 @@ INSERT INTO `user_access_submenu` (`id`, `role_id`, `submenu_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_access_user`
+-- Table structure for table `user_access_user`
 --
 
 DROP TABLE IF EXISTS `user_access_user`;
@@ -306,7 +341,7 @@ CREATE TABLE IF NOT EXISTS `user_access_user` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_menu`
+-- Table structure for table `user_menu`
 --
 
 DROP TABLE IF EXISTS `user_menu`;
@@ -318,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `user_menu` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data untuk tabel `user_menu`
+-- Dumping data for table `user_menu`
 --
 
 INSERT INTO `user_menu` (`id`, `icon`, `menu_id`, `menu`) VALUES
@@ -331,7 +366,7 @@ INSERT INTO `user_menu` (`id`, `icon`, `menu_id`, `menu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_role`
+-- Table structure for table `user_role`
 --
 
 DROP TABLE IF EXISTS `user_role`;
@@ -341,7 +376,7 @@ CREATE TABLE IF NOT EXISTS `user_role` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `user_role`
+-- Dumping data for table `user_role`
 --
 
 INSERT INTO `user_role` (`id`, `role`) VALUES
@@ -353,7 +388,7 @@ INSERT INTO `user_role` (`id`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_sub_menu`
+-- Table structure for table `user_sub_menu`
 --
 
 DROP TABLE IF EXISTS `user_sub_menu`;
@@ -368,7 +403,7 @@ CREATE TABLE IF NOT EXISTS `user_sub_menu` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
--- Dumping data untuk tabel `user_sub_menu`
+-- Dumping data for table `user_sub_menu`
 --
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `sort`, `is_active`) VALUES
@@ -389,7 +424,7 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `sort`, `i
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_token`
+-- Table structure for table `user_token`
 --
 
 DROP TABLE IF EXISTS `user_token`;
@@ -403,7 +438,7 @@ CREATE TABLE IF NOT EXISTS `user_token` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `web_setting`
+-- Table structure for table `web_setting`
 --
 
 DROP TABLE IF EXISTS `web_setting`;
@@ -414,7 +449,7 @@ CREATE TABLE IF NOT EXISTS `web_setting` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data untuk tabel `web_setting`
+-- Dumping data for table `web_setting`
 --
 
 INSERT INTO `web_setting` (`id`, `name`, `is_active`) VALUES
@@ -522,12 +557,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `bank_kategori`
 --
 ALTER TABLE `bank_kategori`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `bank_soal`
 --
 ALTER TABLE `bank_soal`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `options`
 --
@@ -542,7 +577,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT for table `user_access_kategori`
 --
 ALTER TABLE `user_access_kategori`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --

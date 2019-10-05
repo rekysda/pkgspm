@@ -36,8 +36,6 @@ class Lock extends CI_Controller
         $menuaccess = $this->uri->segment(3);
         if ($menuaccess == '1') {
             $this->db->where('id>', 0);
-        } else {
-            $this->db->where('id!=', 1);
         }
         $data['kategori'] = $this->db->get('bank_kategori')->result_array();
 

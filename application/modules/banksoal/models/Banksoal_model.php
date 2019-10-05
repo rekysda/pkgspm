@@ -8,7 +8,7 @@ class Banksoal_model extends CI_Model
 
     $this->db->select('`bank_kategori`.*');
     $this->db->from('bank_kategori');
-    $this->db->order_by('bank_kategori.kategori', 'asc');
+    $this->db->order_by('id', 'asc');
     return $this->db->get()->result_array();
   }
   public function get_kategori_byId($id)
@@ -25,7 +25,7 @@ class Banksoal_model extends CI_Model
     $this->db->select('`bank_soal`.*,bank_kategori.kategori');
     $this->db->from('bank_soal');
     $this->db->join('bank_kategori', 'bank_kategori.id = bank_soal.kategori_id');
-    $this->db->order_by('bank_soal.soal', 'asc');
+    $this->db->order_by('bank_soal.id', 'asc');
     return $this->db->get()->result_array();
   }
   public function get_soal_byId($id)

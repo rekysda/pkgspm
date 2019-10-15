@@ -18,11 +18,14 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
+      Asal <?=$user_asal?> Tujuan <?= $user_tujuan ?><br>
         <h3 class="box-title">Tujuan : <?= $namagurutujuan;?></h3>
       </div>
       <div class="box-body">
         <div class="table-responsive">
-        <form method="post" action="<?= base_url('kuisioner/addjawaban') ?>">
+        <form method="post" action="<?= base_url('kuisioner/penilaian_addjawaban') ?>">
+        <input type="hidden" name="user_asal" value="<?= $user_asal ?>">
+        <input type="hidden" name="user_tujuan" value="<?= $user_tujuan ?>">
           <table class="table table-hover">
               <tr>
                 <th scope="col">#</th>
@@ -42,10 +45,12 @@
                   <th scope="row"><?= $i; ?></th>
                   <td><?= $dt['soal']; ?></td>
                   <td>
-                        <select name='status[]' class='form-control'>
+                  <input type="hidden" name="kategori_id[]" value="<?= $dt['kategori_id'] ?>">
+                  <input type="hidden" name="soal_id[]" value="<?= $dt['id'] ?>">
+                        <select name='jawaban[]' class='form-control'>
                           <?php $stats = array('','Kurang', 'Sedang', 'Baik', 'BaikSekali');
                                 for ($n = 1; $n <= 4; $n++) {
-                                    echo "<option value='$stats[$n]'>$stats[$n]</option>";
+                                    echo "<option value='$n'>$stats[$n]</option>";
                                   }
                                 
                                 ?>
@@ -57,7 +62,9 @@
               <?php endforeach; ?>
               <?php endforeach; ?>
               <tr>
-                <td colspan="3"align="right"><input type="submit" value="Simpan" name="submit" class="btn btn-success"></td>
+                <td colspan="3"align="right">
+                <a href="<?= base_url('kuisioner/penilaian')?>" class="btn btn-warning">Kembali</a>
+                &nbsp;&nbsp;<input type="submit" value="Simpan" name="submit" class="btn btn-success"></td>
                     </tr>
                   </tbody>
                 </table>

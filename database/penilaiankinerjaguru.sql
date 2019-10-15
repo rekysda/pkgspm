@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 14 Okt 2019 pada 08.25
+-- Generation Time: 15 Okt 2019 pada 06.08
 -- Versi Server: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -70,6 +70,40 @@ INSERT INTO `bank_kategori` (`id`, `kategori`) VALUES
 (6, 'Kerjasama'),
 (7, 'Kedisiplinan'),
 (8, 'Kepemimpinan');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `bank_penilaian`
+--
+
+DROP TABLE IF EXISTS `bank_penilaian`;
+CREATE TABLE IF NOT EXISTS `bank_penilaian` (
+`id` int(11) NOT NULL,
+  `kategori_id` varchar(100) NOT NULL,
+  `soal_id` varchar(100) NOT NULL,
+  `user_asal` varchar(100) NOT NULL,
+  `user_tujuan` varchar(100) NOT NULL,
+  `jawaban` varchar(100) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+
+--
+-- Dumping data untuk tabel `bank_penilaian`
+--
+
+INSERT INTO `bank_penilaian` (`id`, `kategori_id`, `soal_id`, `user_asal`, `user_tujuan`, `jawaban`) VALUES
+(25, '6', '24', '4', '5', '2'),
+(26, '6', '25', '4', '5', '3'),
+(27, '6', '26', '4', '5', '3'),
+(28, '8', '31', '4', '5', '3'),
+(29, '8', '32', '4', '5', '3'),
+(30, '8', '33', '4', '5', '4'),
+(31, '6', '24', '4', '4', '3'),
+(32, '6', '25', '4', '4', '3'),
+(33, '6', '26', '4', '4', '3'),
+(34, '8', '31', '4', '4', '4'),
+(35, '8', '32', '4', '4', '3'),
+(36, '8', '33', '4', '4', '3');
 
 -- --------------------------------------------------------
 
@@ -331,7 +365,6 @@ INSERT INTO `user_access_submenu` (`id`, `role_id`, `submenu_id`) VALUES
 (79, 2, 72),
 (80, 1, 73),
 (81, 1, 11),
-(82, 1, 12),
 (83, 1, 13),
 (84, 3, 2),
 (86, 4, 2),
@@ -433,7 +466,7 @@ CREATE TABLE IF NOT EXISTS `user_sub_menu` (
   `icon` varchar(128) NOT NULL,
   `sort` int(11) NOT NULL DEFAULT '1',
   `is_active` int(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data untuk tabel `user_sub_menu`
@@ -454,7 +487,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `sort`, `i
 (13, 5, 'Role', 'lock/role', '', 1, 1),
 (14, 5, 'User', 'lock/user', '', 2, 1),
 (15, 6, 'Penilaian', 'cbt/penilaian', '', 1, 1),
-(16, 7, 'Penilaian', 'kuisioner/penilaian', '', 1, 1);
+(16, 7, 'Penilaian', 'kuisioner/penilaian', '', 1, 1),
+(17, 7, 'Laporan', 'kuisioner/laporan', '', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -505,6 +539,12 @@ ALTER TABLE `bank_jawab`
 -- Indexes for table `bank_kategori`
 --
 ALTER TABLE `bank_kategori`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bank_penilaian`
+--
+ALTER TABLE `bank_penilaian`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -594,6 +634,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 ALTER TABLE `bank_kategori`
 MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
+-- AUTO_INCREMENT for table `bank_penilaian`
+--
+ALTER TABLE `bank_penilaian`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
+--
 -- AUTO_INCREMENT for table `bank_soal`
 --
 ALTER TABLE `bank_soal`
@@ -642,7 +687,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `user_token`
 --

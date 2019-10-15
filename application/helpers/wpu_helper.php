@@ -377,3 +377,38 @@ function generatekodeinc4($table,$kodeawal,$kode) {
             return "checked='checked'";
         }
     }
+
+    function get_jumlahnilai($user_asal,$user_tujuan)
+{
+    $ci = get_instance();
+    $ci->db->select('sum(jawaban) as value');
+    $ci->db->from('bank_penilaian');
+    $ci->db->where('user_asal', $user_asal);
+    $ci->db->where('user_tujuan', $user_tujuan);
+    return $ci->db->get()->row()->value;
+}
+function get_jumlahsoal($user_asal,$user_tujuan)
+{
+    $ci = get_instance();
+    $ci->db->select('count(id) as value');
+    $ci->db->from('bank_penilaian');
+    $ci->db->where('user_asal', $user_asal);
+    $ci->db->where('user_tujuan', $user_tujuan);
+    return $ci->db->get()->row()->value;
+}
+function get_jumlahnilaiguru($user_tujuan)
+{
+    $ci = get_instance();
+    $ci->db->select('sum(jawaban) as value');
+    $ci->db->from('bank_penilaian');
+    $ci->db->where('user_tujuan', $user_tujuan);
+    return $ci->db->get()->row()->value;
+}
+function get_jumlahsoalguru($user_tujuan)
+{
+    $ci = get_instance();
+    $ci->db->select('count(id) as value');
+    $ci->db->from('bank_penilaian');
+    $ci->db->where('user_tujuan', $user_tujuan);
+    return $ci->db->get()->row()->value;
+}

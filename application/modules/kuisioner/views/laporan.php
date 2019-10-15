@@ -28,7 +28,7 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">User</th>
-                <th scope="col">Action</th>
+                <th scope="col">Penilaian%</th>
               </tr>
             </thead>
             <tbody>
@@ -39,19 +39,20 @@
                   <td><?= $dt['username']; ?></td>
                   <td>
 
-                  <?php $jumlahjawaban=get_jumlahnilai($user_asal,$dt['id']);?>
-                  <?php
-                  if($jumlahjawaban<'1'){ ?>
-                    <a href="<?= base_url('kuisioner/add_attempt/') . $dt['id']; ?>" class="btn btn-primary btn-xs">Attempt</a>
-                  <?php }else{ ?>
-                    <a href="<?= base_url('kuisioner/add_attempt/') . $dt['id']; ?>" class="btn btn-warning btn-xs">Re-Attempt</a>
-                   <?php } ?>
+                  <?php 
+                  $jumlahjawaban=get_jumlahnilaiguru($dt['id']);
+                  $jumlahsoal=get_jumlahsoalguru($dt['id']);
+                  $jumlahmaksnilai=$jumlahsoal*4;
+                  $penilaian = round(($jumlahjawaban/$jumlahmaksnilai)*100);
+                  ?>
+                  <?= ($penilaian) ?>
                   </td>
                 </tr>
                 <?php $i++; ?>
               <?php endforeach; ?>
             </tbody>
           </table>
+          <a href="<?= base_url('kuisioner/cetaklaporan')?>"target="new"class="btn btn-primary">Cetak</a>
         </div>
         <!-- /.box-body -->
       </div>

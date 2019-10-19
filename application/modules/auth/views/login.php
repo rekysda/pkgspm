@@ -13,7 +13,7 @@
     <form class="user" method="post" action="<?= base_url('auth'); ?>">
       <div class="form-group has-feedback <?= form_error('username') ? 'has-error' : '' ?>">
         <input type="username" name="username" value="<?= set_value('username'); ?>" class="form-control" placeholder="Username">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
         <?= form_error('username', '<div class="text-danger">', '</div>') ?>
       </div>
       <div class="form-group has-feedback <?= form_error('password') ? 'has-error' : '' ?>">

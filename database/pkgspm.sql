@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 15 Okt 2019 pada 06.08
--- Versi Server: 5.6.20
+-- Generation Time: Oct 19, 2019 at 03:37 AM
+-- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -17,15 +17,15 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `penilaiankinerjaguru`
+-- Database: `pkgspm`
 --
-CREATE DATABASE IF NOT EXISTS `penilaiankinerjaguru` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `penilaiankinerjaguru`;
+CREATE DATABASE IF NOT EXISTS `pkgspm` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `pkgspm`;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bank_jawab`
+-- Table structure for table `bank_jawab`
 --
 
 DROP TABLE IF EXISTS `bank_jawab`;
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `bank_jawab` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `bank_jawab`
+-- Dumping data for table `bank_jawab`
 --
 
 INSERT INTO `bank_jawab` (`id`, `jawab`, `skor`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `bank_jawab` (`id`, `jawab`, `skor`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bank_kategori`
+-- Table structure for table `bank_kategori`
 --
 
 DROP TABLE IF EXISTS `bank_kategori`;
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `bank_kategori` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data untuk tabel `bank_kategori`
+-- Dumping data for table `bank_kategori`
 --
 
 INSERT INTO `bank_kategori` (`id`, `kategori`) VALUES
@@ -74,7 +74,7 @@ INSERT INTO `bank_kategori` (`id`, `kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bank_penilaian`
+-- Table structure for table `bank_penilaian`
 --
 
 DROP TABLE IF EXISTS `bank_penilaian`;
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `bank_penilaian` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
--- Dumping data untuk tabel `bank_penilaian`
+-- Dumping data for table `bank_penilaian`
 --
 
 INSERT INTO `bank_penilaian` (`id`, `kategori_id`, `soal_id`, `user_asal`, `user_tujuan`, `jawaban`) VALUES
@@ -108,7 +108,7 @@ INSERT INTO `bank_penilaian` (`id`, `kategori_id`, `soal_id`, `user_asal`, `user
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bank_soal`
+-- Table structure for table `bank_soal`
 --
 
 DROP TABLE IF EXISTS `bank_soal`;
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `bank_soal` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
--- Dumping data untuk tabel `bank_soal`
+-- Dumping data for table `bank_soal`
 --
 
 INSERT INTO `bank_soal` (`id`, `kategori_id`, `soal`) VALUES
@@ -156,7 +156,7 @@ INSERT INTO `bank_soal` (`id`, `kategori_id`, `soal`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `options`
+-- Table structure for table `options`
 --
 
 DROP TABLE IF EXISTS `options`;
@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `options` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
--- Dumping data untuk tabel `options`
+-- Dumping data for table `options`
 --
 
 INSERT INTO `options` (`id`, `name`, `value`) VALUES
@@ -188,7 +188,7 @@ INSERT INTO `options` (`id`, `name`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 DROP TABLE IF EXISTS `user`;
@@ -206,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `username`, `email`, `hp`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
@@ -218,7 +218,7 @@ INSERT INTO `user` (`id`, `name`, `username`, `email`, `hp`, `image`, `password`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_access_kategori`
+-- Table structure for table `user_access_kategori`
 --
 
 DROP TABLE IF EXISTS `user_access_kategori`;
@@ -229,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `user_access_kategori` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
--- Dumping data untuk tabel `user_access_kategori`
+-- Dumping data for table `user_access_kategori`
 --
 
 INSERT INTO `user_access_kategori` (`id`, `role_id`, `kategori_id`) VALUES
@@ -245,7 +245,7 @@ INSERT INTO `user_access_kategori` (`id`, `role_id`, `kategori_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_access_menu`
+-- Table structure for table `user_access_menu`
 --
 
 DROP TABLE IF EXISTS `user_access_menu`;
@@ -256,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `user_access_menu` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
--- Dumping data untuk tabel `user_access_menu`
+-- Dumping data for table `user_access_menu`
 --
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
@@ -278,7 +278,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_access_submenu`
+-- Table structure for table `user_access_submenu`
 --
 
 DROP TABLE IF EXISTS `user_access_submenu`;
@@ -289,7 +289,7 @@ CREATE TABLE IF NOT EXISTS `user_access_submenu` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=91 ;
 
 --
--- Dumping data untuk tabel `user_access_submenu`
+-- Dumping data for table `user_access_submenu`
 --
 
 INSERT INTO `user_access_submenu` (`id`, `role_id`, `submenu_id`) VALUES
@@ -376,7 +376,7 @@ INSERT INTO `user_access_submenu` (`id`, `role_id`, `submenu_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_access_user`
+-- Table structure for table `user_access_user`
 --
 
 DROP TABLE IF EXISTS `user_access_user`;
@@ -387,7 +387,7 @@ CREATE TABLE IF NOT EXISTS `user_access_user` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
 --
--- Dumping data untuk tabel `user_access_user`
+-- Dumping data for table `user_access_user`
 --
 
 INSERT INTO `user_access_user` (`id`, `asal_id`, `tujuan_id`) VALUES
@@ -405,7 +405,7 @@ INSERT INTO `user_access_user` (`id`, `asal_id`, `tujuan_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_menu`
+-- Table structure for table `user_menu`
 --
 
 DROP TABLE IF EXISTS `user_menu`;
@@ -417,7 +417,7 @@ CREATE TABLE IF NOT EXISTS `user_menu` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
--- Dumping data untuk tabel `user_menu`
+-- Dumping data for table `user_menu`
 --
 
 INSERT INTO `user_menu` (`id`, `icon`, `menu_id`, `menu`) VALUES
@@ -432,7 +432,7 @@ INSERT INTO `user_menu` (`id`, `icon`, `menu_id`, `menu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_role`
+-- Table structure for table `user_role`
 --
 
 DROP TABLE IF EXISTS `user_role`;
@@ -441,20 +441,10 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   `role` varchar(256) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
---
--- Dumping data untuk tabel `user_role`
---
-
-INSERT INTO `user_role` (`id`, `role`) VALUES
-(1, 'Administrator'),
-(2, 'Kepala Sekolah'),
-(3, 'Guru'),
-(4, 'Siswa');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_sub_menu`
+-- Table structure for table `user_sub_menu`
 --
 
 DROP TABLE IF EXISTS `user_sub_menu`;
@@ -469,7 +459,7 @@ CREATE TABLE IF NOT EXISTS `user_sub_menu` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
--- Dumping data untuk tabel `user_sub_menu`
+-- Dumping data for table `user_sub_menu`
 --
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `sort`, `is_active`) VALUES
@@ -493,7 +483,7 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `sort`, `i
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_token`
+-- Table structure for table `user_token`
 --
 
 DROP TABLE IF EXISTS `user_token`;
@@ -507,7 +497,7 @@ CREATE TABLE IF NOT EXISTS `user_token` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `web_setting`
+-- Table structure for table `web_setting`
 --
 
 DROP TABLE IF EXISTS `web_setting`;
@@ -518,7 +508,7 @@ CREATE TABLE IF NOT EXISTS `web_setting` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data untuk tabel `web_setting`
+-- Dumping data for table `web_setting`
 --
 
 INSERT INTO `web_setting` (`id`, `name`, `is_active`) VALUES

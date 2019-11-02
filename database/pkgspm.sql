@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2019 at 03:37 AM
+-- Generation Time: Nov 02, 2019 at 04:01 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -226,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `user_access_kategori` (
 `id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   `kategori_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `user_access_kategori`
@@ -240,7 +240,15 @@ INSERT INTO `user_access_kategori` (`id`, `role_id`, `kategori_id`) VALUES
 (21, 2, 6),
 (22, 3, 6),
 (23, 3, 8),
-(24, 4, 8);
+(24, 4, 8),
+(25, 1, 1),
+(26, 1, 2),
+(27, 1, 3),
+(28, 1, 5),
+(29, 1, 4),
+(30, 1, 6),
+(31, 1, 7),
+(32, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -439,7 +447,16 @@ DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE IF NOT EXISTS `user_role` (
 `id` int(11) NOT NULL,
   `role` varchar(256) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `user_role`
+--
+
+INSERT INTO `user_role` (`id`, `role`) VALUES
+(1, 'Administrator'),
+(2, 'Guru'),
+(3, 'Siswa');
 
 -- --------------------------------------------------------
 
@@ -647,7 +664,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- AUTO_INCREMENT for table `user_access_kategori`
 --
 ALTER TABLE `user_access_kategori`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
@@ -672,7 +689,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user_sub_menu`
 --

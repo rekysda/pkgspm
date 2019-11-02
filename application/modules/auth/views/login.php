@@ -24,7 +24,7 @@
       <div class="row">
         <div class="col-xs-8">
         
-            <a href="<?= base_url('auth/forgotPassword'); ?>">Forgot Password?</a><br>
+    <!--        <a href="<?= base_url('auth/forgotPassword'); ?>">Forgot Password?</a><br>-->
         
        
         </div>

@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="<?= base_url('assets/themes/backend/dist/css/AdminLTE.min.css'); ?>">
   <!-- iCheck -->
   <link rel="stylesheet" href="<?= base_url('assets/themes/backend/plugins/iCheck/square/blue.css'); ?>">
-
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -29,4 +29,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<body class="hold-transition <?= $body_class; ?>">
+<style>
+.bg {
+  /* The image used */
+  background-image: url("assets/images/background01.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>
+<body class="bg">

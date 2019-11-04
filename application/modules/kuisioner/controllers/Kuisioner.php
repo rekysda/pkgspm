@@ -104,8 +104,14 @@ class Kuisioner extends CI_Controller
    $iduserasal = $data['user']['id'];
    $data['listuser'] = $this->Kuisioner_model->get_listuser($iduserasal);
    $data['user_asal']=$data['user']['id'];
-   $this->load->view('cetaklaporan', $data);
-   
+ //  $this->load->view('cetaklaporan', $data);
+
+   $html = $this->load->view('cetaklaporan', $data, true);
+    // create pdf using dompdf
+    $filename = 'laporanpkg_pdf' . date('dmY') . '_' . date('His');
+    $paper = 'F4';
+    $orientation = 'potrait';
+    pdf_create($html, $filename, $paper, $orientation);
  }
  public function detail($usertujuan_id)
  {
@@ -135,8 +141,13 @@ class Kuisioner extends CI_Controller
    $data['namagurutujuan']=$data['usertujuan']['name'];
    $this->load->model('Kuisioner_model', 'Kuisioner_model');
    $data['listkategori'] = $this->Kuisioner_model->get_listkategoriuser($usertujuan_id);
-   $this->load->view('cetaklaporandetail', $data);
-   
+ //  $this->load->view('cetaklaporandetail', $data);
+ $html = $this->load->view('cetaklaporandetail', $data, true);
+ // create pdf using dompdf
+ $filename = 'laporanpkgdetail_pdf' . date('dmY') . '_' . date('His');
+ $paper = 'F4';
+ $orientation = 'potrait';
+ pdf_create($html, $filename, $paper, $orientation);
  }
   //end
 }

@@ -10,7 +10,7 @@
 		border-color: #D8D8D8;
 		border-collapse: collapse;
 		margin: 10px 0px;
-		font-size: 12px;
+        font-size: 12px;
 	}
 
 	table#tablestd td {
@@ -47,29 +47,32 @@
 		font-size: 24px;
 	}
 </style>
-<h4> <?= $title; ?></h4>
+<b> <?= $title; ?></b>
+<b class="box-title">Guru : <?= $namagurutujuan;?></b>
 <table id="tablestd">
               <tr>
                 <td >#</td>
-                <td >User</td>
+                <td >Kategori</td>
                 <td >Penilaian%</td>
               </tr>
               <?php $i = 1; ?>
-              <?php foreach ($listuser as $dt) : ?>
+              <?php foreach ($listkategori as $dt) : ?>
                 <tr>
                   <td><?= $i; ?></td>
-                  <td><?= $dt['username']; ?></td>
+                  <td><?= $dt['kategori']; ?></td>
                   <td>
-
                   <?php 
-                  $jumlahjawaban=get_jumlahnilaiguru($dt['id']);
-                  $jumlahsoal=get_jumlahsoalguru($dt['id']);
-                  $jumlahmaksnilai=$jumlahsoal*4;
-                  $penilaian = round(($jumlahjawaban/$jumlahmaksnilai)*100);
+                   $jumlahjawaban=get_jumlahnilaiguru_det($dt['user_tujuan'],$dt['kategori_id']);
+                   $jumlahsoal=get_jumlahsoalguru_det($dt['user_tujuan'],$dt['kategori_id']);
+                   $jumlahmaksnilai=$jumlahsoal*4;
+                   $penilaian = round(($jumlahjawaban/$jumlahmaksnilai)*100);
+                   $total +=$penilaian;
                   ?>
                   <?= ($penilaian) ?>
                   </td>
-                </tr>
-                <?php $i++; ?>
+                  </tr>
+                  <?php $rata= round($total/$i); ?>
+                  <?php $i++; ?>
               <?php endforeach; ?>
-          </table>
+              <tr><td colspan="2"align="right"><b>Rata</b></td><td><b><?= $rata; ?></b></td></tr>
+    </table>

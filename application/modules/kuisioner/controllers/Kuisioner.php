@@ -107,5 +107,36 @@ class Kuisioner extends CI_Controller
    $this->load->view('cetaklaporan', $data);
    
  }
+ public function detail($usertujuan_id)
+ {
+   $data['title'] = 'Laporan';
+   $data['user'] = $this->db->get_where('user', ['email' =>
+   $this->session->userdata('email')])->row_array();
+   $data['usertujuan'] = $this->db->get_where('user', ['id' =>
+   $usertujuan_id])->row_array();
+   $data['namagurutujuan']=$data['usertujuan']['name'];
+   $this->load->model('Kuisioner_model', 'Kuisioner_model');
+   $data['listkategori'] = $this->Kuisioner_model->get_listkategoriuser($usertujuan_id);
+   $this->load->view('themes/backend/header', $data);
+   $this->load->view('themes/backend/sidebar', $data);
+   $this->load->view('themes/backend/topbar', $data);
+   $this->load->view('detail', $data);
+   $this->load->view('themes/backend/footer');
+   $this->load->view('themes/backend/footerajax');
+
+ }
+ public function cetaklaporandetail($usertujuan_id)
+ {
+   $data['title'] = 'Laporan Penilaian Guru Detail';
+   $data['user'] = $this->db->get_where('user', ['email' =>
+   $this->session->userdata('email')])->row_array();
+   $data['usertujuan'] = $this->db->get_where('user', ['id' =>
+   $usertujuan_id])->row_array();
+   $data['namagurutujuan']=$data['usertujuan']['name'];
+   $this->load->model('Kuisioner_model', 'Kuisioner_model');
+   $data['listkategori'] = $this->Kuisioner_model->get_listkategoriuser($usertujuan_id);
+   $this->load->view('cetaklaporandetail', $data);
+   
+ }
   //end
 }

@@ -31,5 +31,15 @@ class Kuisioner_model extends CI_Model
     $this->db->order_by('bank_soal.id','asc');
     return $this->db->get()->result_array();
   }
+
+  public function get_listkategoriuser($user_tujuan)
+  {
+    $this->db->select('bank_kategori.*,bank_penilaian.user_tujuan,bank_penilaian.kategori_id');
+    $this->db->from('bank_kategori');
+    $this->db->join('bank_penilaian', 'bank_penilaian.kategori_id = bank_kategori.id');
+    $this->db->where('bank_penilaian.user_tujuan',$user_tujuan);
+    $this->db->group_by('bank_kategori.id','asc');
+    return $this->db->get()->result_array();
+  }
   //end
 }

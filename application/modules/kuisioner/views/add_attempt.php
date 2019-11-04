@@ -18,7 +18,6 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-      Asal <?=$user_asal?> Tujuan <?= $user_tujuan ?><br>
         <h3 class="box-title">Tujuan : <?= $namagurutujuan;?></h3>
       </div>
       <div class="box-body">

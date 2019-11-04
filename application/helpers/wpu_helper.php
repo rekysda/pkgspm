@@ -412,3 +412,21 @@ function get_jumlahsoalguru($user_tujuan)
     $ci->db->where('user_tujuan', $user_tujuan);
     return $ci->db->get()->row()->value;
 }
+function get_jumlahnilaiguru_det($user_tujuan,$kategori_id)
+{
+    $ci = get_instance();
+    $ci->db->select('sum(jawaban) as value');
+    $ci->db->from('bank_penilaian');
+    $ci->db->where('user_tujuan', $user_tujuan);
+    $ci->db->where('kategori_id', $kategori_id);
+    return $ci->db->get()->row()->value;
+}
+function get_jumlahsoalguru_det($user_tujuan,$kategori_id)
+{
+    $ci = get_instance();
+    $ci->db->select('count(id) as value');
+    $ci->db->from('bank_penilaian');
+    $ci->db->where('user_tujuan', $user_tujuan);
+    $ci->db->where('kategori_id', $kategori_id);
+    return $ci->db->get()->row()->value;
+}

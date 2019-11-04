@@ -15,46 +15,42 @@
   <!-- Main content -->
   <section class="content">
 
-
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">List</h3>
+        <h3 class="box-title">Guru : <?= $namagurutujuan;?></h3>
       </div>
       <div class="box-body">
         <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
+        <table class="table table-hover">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">User</th>
+                <th scope="col">Kategori</th>
                 <th scope="col">Penilaian%</th>
-                <th scope="col">Aksi</th>
               </tr>
-            </thead>
-            <tbody>
               <?php $i = 1; ?>
-              <?php foreach ($listuser as $dt) : ?>
+              <?php foreach ($listkategori as $dt) : ?>
                 <tr>
                   <th scope="row"><?= $i; ?></th>
-                  <td><?= $dt['username']; ?></td>
+                  <td><?= $dt['kategori']; ?></td>
                   <td>
-
                   <?php 
-                  $jumlahjawaban=get_jumlahnilaiguru($dt['id']);
-                  $jumlahsoal=get_jumlahsoalguru($dt['id']);
-                  $jumlahmaksnilai=$jumlahsoal*4;
-                  $penilaian = round(($jumlahjawaban/$jumlahmaksnilai)*100);
+                   $jumlahjawaban=get_jumlahnilaiguru_det($dt['user_tujuan'],$dt['kategori_id']);
+                   $jumlahsoal=get_jumlahsoalguru_det($dt['user_tujuan'],$dt['kategori_id']);
+                   $jumlahmaksnilai=$jumlahsoal*4;
+                   $penilaian = round(($jumlahjawaban/$jumlahmaksnilai)*100);
+                   $total +=$penilaian;
                   ?>
                   <?= ($penilaian) ?>
                   </td>
-                  <td><a href='<?= base_url('kuisioner/detail/'.$dt['id']) ?>' class='btn btn-success'>Detail</a></td>
-                </tr>
-                <?php $i++; ?>
+                  </tr>
+                  <?php $rata= round($total/$i); ?>
+                  <?php $i++; ?>
               <?php endforeach; ?>
-            </tbody>
-          </table>
-          <a href="<?= base_url('kuisioner/cetaklaporan')?>"target="new"class="btn btn-primary">Cetak</a>
+              <tr><td colspan="2"align="right"><b>Rata</b></td><td><b><?= $rata; ?></b></td></tr>
+    </table>
+    <a href="<?= base_url('kuisioner/laporan')?>"target="new"class="btn btn-success">Kembali</a>&nbsp;&nbsp;
+    <a href="<?= base_url('kuisioner/cetaklaporandetail/'.$dt['user_tujuan'])?>"target="new"class="btn btn-primary">Cetak</a>
         </div>
         <!-- /.box-body -->
       </div>

@@ -202,6 +202,7 @@ class Admin extends CI_Controller
                 $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
                 $this->db->set('password', $password);
             }
+            $this->db->set('role_id', $role_id);
             $this->db->set('name', $name);
             $this->db->set('is_active', $is_active);
             $this->db->where('email', $email);

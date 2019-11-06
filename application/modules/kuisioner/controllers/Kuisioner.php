@@ -149,5 +149,30 @@ class Kuisioner extends CI_Controller
  $orientation = 'potrait';
  pdf_create($html, $filename, $paper, $orientation);
  }
+
+ public function hapus()
+ {
+   $data['title'] = 'Hapus Penilaian';
+   $data['user'] = $this->db->get_where('user', ['email' =>
+   $this->session->userdata('email')])->row_array();
+   $this->load->model('Kuisioner_model', 'Kuisioner_model');
+   $iduserasal = $data['user']['id'];
+   $data['listuser'] = $this->Kuisioner_model->get_listuser($iduserasal);
+   $data['user_asal']=$data['user']['id'];
+   $this->load->view('themes/backend/header', $data);
+   $this->load->view('themes/backend/sidebar', $data);
+   $this->load->view('themes/backend/topbar', $data);
+   $this->load->view('hapus', $data);
+   $this->load->view('themes/backend/footer');
+   $this->load->view('themes/backend/footerajax');
+   
+ }
+ public function hapus_nilai($id)
+  {
+    $this->db->where('user_tujuan', $id);
+    $this->db->delete('bank_penilaian');
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role"alert">Data deleted !</div>');
+    redirect('kuisioner/hapus');
+  }
   //end
 }

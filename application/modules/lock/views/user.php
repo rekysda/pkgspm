@@ -28,6 +28,7 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">User</th>
+                <th scope="col">Nama</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -37,6 +38,7 @@
                 <tr>
                   <th scope="row"><?= $i; ?></th>
                   <td><?= $dt['username']; ?></td>
+                  <td><?= $dt['name']; ?></td>
                   <td>
                     <a href="<?= base_url('lock/roleuser/') . $dt['id']; ?>" class="btn btn-success btn-xs">Access User</a>
                   </td>

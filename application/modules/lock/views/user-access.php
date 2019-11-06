@@ -28,7 +28,8 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">User</th>
+              <th scope="col">Name </th> 
+              <th scope="col">User </th> 
               <th scope="col">Access</th>
             </tr>
           </thead>
@@ -38,6 +39,7 @@
               <tr>
                 <th scope="row"><?= $i; ?></th>
                 <td><?= $dt['name']; ?></td>
+                <td><?= $dt['username']; ?></td>
                 <td>
                 <div class="form-check">
                     <input class="form-check-input4" type="checkbox" <?= check_access_user($userrole['id'], $dt['id']); ?> data-asal="<?= $userrole['id']; ?>" data-tujuan="<?= $dt['id']; ?>">

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2019 at 03:34 AM
+-- Generation Time: Nov 06, 2019 at 04:51 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -89,24 +89,6 @@ CREATE TABLE IF NOT EXISTS `bank_penilaian` (
   `jawaban` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
-
---
--- Dumping data for table `bank_penilaian`
---
-
-INSERT INTO `bank_penilaian` (`id`, `kategori_id`, `soal_id`, `user_asal`, `user_tujuan`, `jawaban`) VALUES
-(43, '6', '24', '4', '5', '3'),
-(44, '6', '25', '4', '5', '4'),
-(45, '6', '26', '4', '5', '3'),
-(46, '8', '31', '4', '5', '3'),
-(47, '8', '32', '4', '5', '4'),
-(48, '8', '33', '4', '5', '4'),
-(55, '6', '24', '5', '5', '3'),
-(56, '6', '25', '5', '5', '4'),
-(57, '6', '26', '5', '5', '2'),
-(58, '8', '31', '5', '5', '3'),
-(59, '8', '32', '5', '5', '3'),
-(60, '8', '33', '5', '5', '4');
 
 -- --------------------------------------------------------
 
@@ -209,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `is_active` int(1) NOT NULL,
   `date_created` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
 
 --
 -- Dumping data for table `user`
@@ -217,9 +199,52 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `name`, `username`, `email`, `hp`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
 (3, 'Administrator', 'superadmin', 'admin@admin.com', '', 'default.jpg', '$2y$10$xP5rx.6d0AasybhMP23yVeMTGKehXum1f88FqO3oL8tP0m5H5369m', 1, 1, 1555463755),
-(4, 'Guru 1', 'guru1', 'guru1@guru1.com', '', 'default.jpg', '$2y$10$VXL8dtAxV7w/HFjh6h61aOMk.Mdn9IXdHWmZFipHyosqeIRicjhym', 3, 1, 1569903545),
-(5, 'Guru 2', 'guru2', 'guru2@guru2.com', '', 'default.jpg', '$2y$10$s/Inr87j0Q4UCumYxVvrpOeL1oqYaDOTVWs2RizT1hdgZH87Ta2sC', 3, 1, 1569903586),
-(6, 'Kepala Sekolah', 'kepalasekolah', 'kepalasekolah@kepalasekolah.com', '', 'default.jpg', '$2y$10$wzYVRGWgifRbrpadPtADMOg/d7X/L2rgyhFHIICMDy8XCte5W2W76', 2, 1, 1571026634);
+(4, 'Drs. Iman Santoso. MM', 'guru1', 'guru1@guru1.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 3, 1, 1569903545),
+(5, 'Nyoman Kusuma. BA.Shp', 'guru2', 'guru2@guru2.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 3, 1, 1569903586),
+(6, 'Kepala Sekolah', 'kepalasekolah', 'kepalasekolah@kepalasekolah.com', '', 'default.jpg', '$2y$10$wzYVRGWgifRbrpadPtADMOg/d7X/L2rgyhFHIICMDy8XCte5W2W76', 2, 1, 1571026634),
+(7, 'Drs. Ernol Iswahyudi. MM', 'guru3', 'guru3@guru3.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(8, 'Eko Purnomo. S.Pi, ANT-III', 'guru4', 'guru4@guru4.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(9, 'Eddy Sarno. ANT - III', 'guru5', 'guru5@guru5.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(10, 'M.Taufik. ATT-II,MM', 'guru6', 'guru6@guru6.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(11, 'Heri Wahyuni. SH, S.Pd', 'guru7', 'guru7@guru7.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(12, 'Drs.Dwi Wahyu Hidayat', 'guru8', 'guru8@guru8.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(13, 'Dra. Hj. Kuma?iyah', 'guru9', 'guru9@guru9.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(14, 'Drs. M. Munfasir, MM', 'guru10', 'guru10@guru10.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(15, 'Ir. Riswan Wahyudi, MT', 'guru11', 'guru11@guru11.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(16, 'Itensius Valentinus G.BA.Shp', 'guru12', 'guru12@guru12.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(17, 'Anugerah Budi Setiada, S.T.', 'guru13', 'guru13@guru13.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(18, 'Ainul Fitriyah, S.Pd.I, M.Fil', 'guru14', 'guru14@guru14.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(19, 'Hindri Mauludfiana, S.Pd', 'guru15', 'guru15@guru15.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(20, 'Subali, SH, MH', 'guru16', 'guru16@guru16.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(21, 'Drs. HM. Syahrir', 'guru17', 'guru17@guru17.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(22, 'Zulaikah, A.md, SE', 'guru18', 'guru18@guru18.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(23, 'Ikawati, S.Pd', 'guru19', 'guru19@guru19.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(24, 'Irwan Suryo Mulyono, S.Or', 'guru20', 'guru20@guru20.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(25, 'Fransiskus Asisi Riberu.ANT-I', 'guru21', 'guru21@guru21.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(26, 'H. Akhmad Munaji, ANT-III', 'guru22', 'guru22@guru22.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(27, 'Wiwik Indriyani, S.Pd', 'guru23', 'guru23@guru23.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(28, 'Djoko Darjatno, ATT-II', 'guru24', 'guru24@guru24.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(29, 'Pranomo, ANT-III', 'guru25', 'guru25@guru25.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(30, 'Oerip Soepartono, ANT-II', 'guru26', 'guru26@guru26.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(31, 'Sulton Edi Winarko, S.Pd', 'guru27', 'guru27@guru27.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(32, 'Tri Deswanto, SRE-I', 'guru28', 'guru28@guru28.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(33, 'Cynthia Ayu Iksani Putri,S.Pd', 'guru29', 'guru29@guru29.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(34, 'Edison Hasanatan P., M.Mar', 'guru30', 'guru30@guru30.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(35, 'Daryanto, ATT-II', 'guru31', 'guru31@guru31.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(36, 'Asrul Fiqi Febrianto ANT III', 'guru32', 'guru32@guru32.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(37, 'Supangat, S.Pd, MM', 'guru33', 'guru33@guru33.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(38, 'Kuncowati. ANT - II', 'guru34', 'guru34@guru34.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(39, 'Fandi Achmad ATT-III', 'guru35', 'guru35@guru35.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(40, 'Slamet Admodjo, SH, MPB-II', 'guru36', 'guru36@guru36.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(41, 'Sumari', 'guru37', 'guru37@guru37.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(42, 'Putut Djatmoko, ANT?II', 'guru38', 'guru38@guru38.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(43, 'Stevanus F.S.,S.ST.Pel,ANT-III', 'guru39', 'guru39@guru39.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(44, 'Fatin Raniahthifal Adiwijaya S.Pd', 'guru40', 'guru40@guru40.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(45, 'Nursiswa. ANT - I', 'guru41', 'guru41@guru41.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(46, 'MH. Thoyib Anis', 'guru42', 'guru42@guru42.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(47, 'Eko Juniarto. ATT - I', 'guru43', 'guru43@guru43.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(48, 'Brachmantiyo ATT - III', 'guru44', 'guru44@guru44.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426),
+(49, 'Yuni Nur hayati S.kom', 'guru45', 'guru45@guru45.com', '', 'default.jpg', '$2y$10$imdvHH/Tf81NcEHkHQjhVOq7oJItGm.EIsICWydzkUw/GFHTtsozS', 2, 1, 1573010426);
 
 -- --------------------------------------------------------
 
@@ -402,7 +427,7 @@ CREATE TABLE IF NOT EXISTS `user_access_user` (
   `asal_id` int(11) NOT NULL,
   `tujuan_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=121 ;
 
 --
 -- Dumping data for table `user_access_user`
@@ -410,15 +435,101 @@ CREATE TABLE IF NOT EXISTS `user_access_user` (
 
 INSERT INTO `user_access_user` (`id`, `asal_id`, `tujuan_id`) VALUES
 (18, 5, 5),
-(19, 5, 4),
 (20, 3, 3),
 (21, 3, 4),
 (22, 3, 5),
-(23, 4, 4),
-(24, 4, 5),
 (26, 6, 4),
 (27, 6, 5),
-(28, 6, 6);
+(28, 6, 6),
+(29, 4, 4),
+(30, 4, 5),
+(31, 4, 46),
+(32, 4, 25),
+(33, 4, 15),
+(34, 4, 9),
+(35, 5, 8),
+(36, 5, 46),
+(37, 5, 26),
+(38, 5, 16),
+(39, 5, 10),
+(40, 7, 7),
+(41, 7, 10),
+(42, 7, 44),
+(43, 7, 27),
+(44, 7, 17),
+(46, 7, 11),
+(47, 8, 8),
+(49, 8, 42),
+(50, 8, 28),
+(51, 8, 18),
+(52, 8, 12),
+(53, 8, 13),
+(54, 9, 9),
+(55, 9, 14),
+(56, 9, 40),
+(57, 9, 29),
+(58, 9, 19),
+(59, 9, 12),
+(60, 10, 10),
+(61, 10, 16),
+(62, 10, 38),
+(63, 10, 30),
+(64, 10, 20),
+(65, 10, 14),
+(66, 11, 11),
+(67, 11, 18),
+(68, 11, 36),
+(69, 11, 31),
+(70, 11, 21),
+(71, 11, 19),
+(72, 12, 12),
+(73, 12, 20),
+(74, 12, 34),
+(75, 12, 32),
+(76, 12, 22),
+(77, 12, 21),
+(78, 13, 13),
+(79, 13, 22),
+(80, 13, 32),
+(81, 13, 33),
+(82, 13, 23),
+(83, 13, 20),
+(84, 14, 14),
+(86, 14, 24),
+(87, 14, 30),
+(88, 14, 34),
+(89, 14, 25),
+(90, 14, 22),
+(91, 15, 15),
+(92, 15, 26),
+(93, 15, 28),
+(94, 15, 35),
+(95, 15, 24),
+(96, 15, 23),
+(97, 16, 16),
+(98, 16, 28),
+(99, 16, 26),
+(100, 16, 36),
+(101, 16, 27),
+(102, 16, 24),
+(103, 17, 17),
+(104, 17, 30),
+(105, 17, 24),
+(106, 17, 37),
+(107, 17, 28),
+(108, 17, 34),
+(109, 18, 18),
+(110, 18, 32),
+(111, 18, 22),
+(112, 18, 28),
+(113, 18, 38),
+(114, 18, 35),
+(115, 19, 19),
+(116, 19, 34),
+(117, 19, 20),
+(118, 19, 39),
+(119, 19, 29),
+(120, 19, 36);
 
 -- --------------------------------------------------------
 

@@ -27,7 +27,7 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">User</th>
+                <th scope="col">Guru</th>
                 <th scope="col">Nilai</th>
                 <th scope="col">Action</th>
               </tr>
@@ -37,7 +37,7 @@
               <?php foreach ($listuser as $dt) : ?>
                 <tr>
                   <th scope="row"><?= $i; ?></th>
-                  <td><?= $dt['username']; ?></td>
+                  <td><?= $dt['name']; ?></td>
                   <?php 
                   $jumlahjawaban=get_jumlahnilaiguru($dt['id']);
                   $jumlahsoal=get_jumlahsoalguru($dt['id']);

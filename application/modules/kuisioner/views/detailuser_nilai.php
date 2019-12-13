@@ -27,37 +27,26 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Guru</th>
-                <th scope="col">Nilai</th>
+                <th scope="col">Guru Penilai</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
               <?php $i = 1; ?>
-              <?php foreach ($listuser as $dt) : ?>
+              <?php foreach ($listuserpenilai as $dt) : ?>
                 <tr>
                   <th scope="row"><?= $i; ?></th>
                   <td><?= $dt['name']; ?></td>
-                  <?php 
-                  $jumlahjawaban=get_jumlahnilaiguru($dt['id']);
-                  $jumlahsoal=get_jumlahsoalguru($dt['id']);
-                  $jumlahmaksnilai=$jumlahsoal*4;
-                  $penilaian = round(($jumlahjawaban/$jumlahmaksnilai)*100);
-                  ?>
+
                   <td>
-                  <?= ($penilaian) ?>
-                  </td>
-                  <td>
-                  <?php if($penilaian>'0'){?>
-                    <a href="<?= base_url('kuisioner/hapus_nilai/') . $dt['id']; ?>" class="btn btn-danger btn-xs"onclick="return confirm('Anda yakin ? data tidak dapat dikembalikan lagi...');">Hapus</a>&nbsp;&nbsp;
-                    <a href="<?= base_url('kuisioner/detailuser_nilai/') . $dt['id']; ?>" class="btn btn-warning btn-xs">DetailUser</a>
-                  <?php } ?>
+                    <a href="<?= base_url('kuisioner/hapus_nilaiuser/') . $dt['user_asal']; ?>" class="btn btn-danger btn-xs"onclick="return confirm('Anda yakin ? data tidak dapat dikembalikan lagi...');">Hapus</a>
                   </td>
                 </tr>
                 <?php $i++; ?>
               <?php endforeach; ?>
             </tbody>
           </table>
+          <a href="<?= base_url('kuisioner/hapus/')?>"class="btn btn-success">Kembali</a>
         </div>
         <!-- /.box-body -->
       </div>

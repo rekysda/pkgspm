@@ -39,7 +39,7 @@
                   <td><?= $dt['name']; ?></td>
 
                   <td>
-                    <a href="<?= base_url('kuisioner/hapus_nilaiuser/') . $dt['user_asal']; ?>" class="btn btn-danger btn-xs"onclick="return confirm('Anda yakin ? data tidak dapat dikembalikan lagi...');">Hapus</a>
+                    <a href="<?= base_url('kuisioner/hapus_nilaiuser/') . $dt['user_asal'].'/'.$dt['user_tujuan']; ?>" class="btn btn-danger btn-xs"onclick="return confirm('Anda yakin ? data tidak dapat dikembalikan lagi...');">Hapus</a>
                   </td>
                 </tr>
                 <?php $i++; ?>

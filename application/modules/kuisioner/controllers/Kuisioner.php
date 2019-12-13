@@ -193,8 +193,9 @@ class Kuisioner extends CI_Controller
     
   }
 
-  public function hapus_nilaiuser($id)
+  public function hapus_nilaiuser($id,$user_tujuan)
   {
+    $this->db->where('user_tujuan', $user_tujuan);
     $this->db->where('user_asal', $id);
     $this->db->delete('bank_penilaian');
     $this->session->set_flashdata('message', '<div class="alert alert-success" role"alert">Data deleted !</div>');

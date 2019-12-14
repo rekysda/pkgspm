@@ -52,7 +52,7 @@
               <tr>
                 <td >#</td>
                 <td >User</td>
-                <td >Penilaian%</td>
+                <td >Penilaian</td>
               </tr>
               <?php $i = 1; ?>
               <?php foreach ($listuser as $dt) : ?>

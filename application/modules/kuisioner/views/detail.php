@@ -30,7 +30,7 @@
                   <th scope="col">
                   <?= $dtr['role'] ?></th>
                   <?php endforeach; ?>
-                <th scope="col">Penilaian%</th>
+                <th scope="col">Penilaian</th>
               </tr>
               <?php $i = 1; ?>
               <?php foreach ($listkategori as $dt) : ?>

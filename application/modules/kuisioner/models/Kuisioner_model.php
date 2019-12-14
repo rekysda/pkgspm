@@ -41,11 +41,21 @@ class Kuisioner_model extends CI_Model
     $this->db->group_by('bank_kategori.id','asc');
     return $this->db->get()->result_array();
   }
+<<<<<<< HEAD
   public function get_listrole()
   {
     $this->db->select('user_role.*');
     $this->db->from('user_role');
     $this->db->group_by('user_role.id','asc');
+=======
+  public function get_listuserpenilai($id)
+  {
+    $this->db->select('user.name,bank_penilaian.user_asal,bank_penilaian.user_tujuan');
+    $this->db->from('user');
+    $this->db->join('bank_penilaian', 'bank_penilaian.user_asal = user.id');
+    $this->db->where('bank_penilaian.user_tujuan',$id);
+    $this->db->group_by('bank_penilaian.user_asal');
+>>>>>>> d553814ce57e92ad61c85ccd67ea48d0b67c088b
     return $this->db->get()->result_array();
   }
   //end

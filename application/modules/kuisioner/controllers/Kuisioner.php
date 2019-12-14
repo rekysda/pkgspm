@@ -178,5 +178,32 @@ class Kuisioner extends CI_Controller
     $this->session->set_flashdata('message', '<div class="alert alert-success" role"alert">Data deleted !</div>');
     redirect('kuisioner/hapus');
   }
+
+  public function detailuser_nilai($id)
+  {
+    $data['title'] = 'Hapus Penilaian';
+    $data['user'] = $this->db->get_where('user', ['email' =>
+    $this->session->userdata('email')])->row_array();
+    $this->load->model('Kuisioner_model', 'Kuisioner_model');
+
+    $data['listuserpenilai'] = $this->Kuisioner_model->get_listuserpenilai($id);
+    $data['user_asal']=$data['user']['id'];
+    $this->load->view('themes/backend/header', $data);
+    $this->load->view('themes/backend/sidebar', $data);
+    $this->load->view('themes/backend/topbar', $data);
+    $this->load->view('detailuser_nilai', $data);
+    $this->load->view('themes/backend/footer');
+    $this->load->view('themes/backend/footerajax');
+    
+  }
+
+  public function hapus_nilaiuser($id,$user_tujuan)
+  {
+    $this->db->where('user_tujuan', $user_tujuan);
+    $this->db->where('user_asal', $id);
+    $this->db->delete('bank_penilaian');
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role"alert">Data deleted !</div>');
+    redirect('kuisioner/hapus');
+  }
   //end
 }

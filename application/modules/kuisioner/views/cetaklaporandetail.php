@@ -53,7 +53,7 @@
               <tr>
                 <td >#</td>
                 <td >Kategori</td>
-                <td >Penilaian%</td>
+                <td >Penilaian</td>
               </tr>
               <?php $i = 1; ?>
               <?php foreach ($listkategori as $dt) : ?>

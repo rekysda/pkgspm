@@ -21,6 +21,14 @@ class Kuisioner_model extends CI_Model
     $this->db->order_by('bank_kategori.id','asc');
     return $this->db->get()->result_array();
   }
+  public function get_listkategoriall()
+  {
+    $this->db->select('bank_kategori.*');
+    $this->db->from('bank_kategori');
+    $this->db->join('user_access_kategori', 'user_access_kategori.kategori_id = bank_kategori.id');
+    $this->db->group_by('bank_kategori.id','asc');
+    return $this->db->get()->result_array();
+  }
 
   public function get_listquestion($role_id)
   {
@@ -31,7 +39,13 @@ class Kuisioner_model extends CI_Model
     $this->db->order_by('bank_soal.id','asc');
     return $this->db->get()->result_array();
   }
-
+  public function get_listquestionall()
+  {
+    $this->db->select('bank_soal.*');
+    $this->db->from('bank_soal');
+    $this->db->group_by('bank_soal.id','asc');
+    return $this->db->get()->result_array();
+  }
   public function get_listkategoriuser($user_tujuan)
   {
     $this->db->select('bank_kategori.*,bank_penilaian.user_tujuan,bank_penilaian.kategori_id');

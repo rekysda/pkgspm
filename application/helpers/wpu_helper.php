@@ -438,6 +438,7 @@ function get_jumlahnilaiguru_role($user_tujuan,$kategori_id,$role_id)
     $ci->db->where('user_tujuan', $user_tujuan);
     $ci->db->where('kategori_id', $kategori_id);
     $ci->db->where('role_id', $role_id);
+    $ci->db->where('user_asal<>', $user_tujuan);
     return $ci->db->get()->row()->value;
 }
 function get_jumlahsoalguru_role($user_tujuan,$kategori_id,$role_id)
@@ -448,5 +449,26 @@ function get_jumlahsoalguru_role($user_tujuan,$kategori_id,$role_id)
     $ci->db->where('user_tujuan', $user_tujuan);
     $ci->db->where('kategori_id', $kategori_id);
     $ci->db->where('role_id', $role_id);
+    $ci->db->where('user_asal<>', $user_tujuan);
+    return $ci->db->get()->row()->value;
+}
+function get_jumlahnilaiguru_rolesendiri($user_tujuan,$kategori_id)
+{
+    $ci = get_instance();
+    $ci->db->select('sum(jawaban) as value');
+    $ci->db->from('bank_penilaian');
+    $ci->db->where('user_tujuan', $user_tujuan);
+    $ci->db->where('kategori_id', $kategori_id);
+    $ci->db->where('user_asal', $user_tujuan);
+    return $ci->db->get()->row()->value;
+}
+function get_jumlahsoalguru_rolesendiri($user_tujuan,$kategori_id)
+{
+    $ci = get_instance();
+    $ci->db->select('count(id) as value');
+    $ci->db->from('bank_penilaian');
+    $ci->db->where('user_tujuan', $user_tujuan);
+    $ci->db->where('kategori_id', $kategori_id);
+    $ci->db->where('user_asal', $user_tujuan);
     return $ci->db->get()->row()->value;
 }

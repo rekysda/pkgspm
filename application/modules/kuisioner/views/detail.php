@@ -26,6 +26,7 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Kategori</th>
+                <th scope="col">DiriSendiri</th>
                 <?php foreach ($list_role as $dtr) : ?>
                   <th scope="col">
                   <?= $dtr['role'] ?></th>
@@ -37,13 +38,19 @@
                 <tr>
                   <th scope="row"><?= $i; ?></th>
                   <td><?= $dt['kategori']; ?></td>
+                  <?php                 
+                  $jumlahjawabanrolesendiri=get_jumlahnilaiguru_rolesendiri($dt['user_tujuan'],$dt['kategori_id']);
+                  $jumlahsoalrolesendiri=get_jumlahsoalguru_rolesendiri($dt['user_tujuan'],$dt['kategori_id']);
+                  $jumlahmaksnilairolesendiri=$jumlahsoalrolesendiri*4;
+                  $penilaianrolesendiri = round(($jumlahjawabanrolesendiri/$jumlahmaksnilairolesendiri)*100);
+                  ?>
+                  <th scope="col"><?= $penilaianrolesendiri ?></th>
                   <?php foreach ($list_role as $dtr) : ?>
-                    <?php
+                    <?php                 
                   $jumlahjawabanrole=get_jumlahnilaiguru_role($dt['user_tujuan'],$dt['kategori_id'],$dtr['id']);
                   $jumlahsoalrole=get_jumlahsoalguru_role($dt['user_tujuan'],$dt['kategori_id'],$dtr['id']);
                   $jumlahmaksnilairole=$jumlahsoalrole*4;
-                   $penilaianrole = round(($jumlahjawabanrole/$jumlahmaksnilairole)*100);
-                   
+                  $penilaianrole = round(($jumlahjawabanrole/$jumlahmaksnilairole)*100);
                   ?>
                   <th scope="col"><?= $penilaianrole ?></th>
                   <?php endforeach; ?>
@@ -65,7 +72,7 @@
               <?php foreach ($list_role as $dtr) : ?>
                   <td scope="col"></td>
                   <?php endforeach; ?>  
-              <td colspan="2"align="right"><b>Rata</b></td><td><b><?= $rata; ?></b></td></tr>
+              <td colspan="3"align="right"><b>Rata</b></td><td><b><?= $rata; ?></b></td></tr>
     </table>
     <a href="<?= base_url('kuisioner/laporan')?>"target="new"class="btn btn-success">Kembali</a>&nbsp;&nbsp;
     <a href="<?= base_url('kuisioner/cetaklaporandetail/'.$dt['user_tujuan'])?>"target="new"class="btn btn-primary">Cetak</a>

@@ -40,10 +40,15 @@ class Kuisioner extends CI_Controller
    $data['namagurutujuan']=$data['usertujuan']['name'];
    $role_id=$data['user']['role_id'];
    $data['role_id']=$data['user']['role_id'];
-   $data['listkategori'] = $this->Kuisioner_model->get_listkategori($role_id);
-   $data['listquestion'] = $this->Kuisioner_model->get_listquestion($role_id);
    $data['user_asal']= $data['user']['id'];
    $data['user_tujuan']= $data['usertujuan']['id'];
+   if($data['user_asal']<>$data['user_tujuan']){
+   $data['listkategori'] = $this->Kuisioner_model->get_listkategori($role_id);
+   $data['listquestion'] = $this->Kuisioner_model->get_listquestion($role_id);
+   }else{
+    $data['listkategori'] = $this->Kuisioner_model->get_listkategoriall();  
+    $data['listquestion'] = $this->Kuisioner_model->get_listquestionall();
+   }
    $this->load->view('themes/backend/header', $data);
    $this->load->view('themes/backend/sidebar', $data);
    $this->load->view('themes/backend/topbar', $data);
@@ -123,6 +128,8 @@ class Kuisioner extends CI_Controller
    $this->session->userdata('email')])->row_array();
    $data['usertujuan'] = $this->db->get_where('user', ['id' =>
    $usertujuan_id])->row_array();
+   $data['user_tujuan']=$data['usertujuan']['id'];
+   $data['user_asal']=$data['user']['id'];
    $data['namagurutujuan']=$data['usertujuan']['name'];
    $this->load->model('Kuisioner_model', 'Kuisioner_model');
    $data['listkategori'] = $this->Kuisioner_model->get_listkategoriuser($usertujuan_id);
@@ -133,7 +140,7 @@ class Kuisioner extends CI_Controller
    $this->load->view('detail', $data);
    $this->load->view('themes/backend/footer');
    $this->load->view('themes/backend/footerajax');
-
+ 
  }
  public function cetaklaporandetail($usertujuan_id)
  {

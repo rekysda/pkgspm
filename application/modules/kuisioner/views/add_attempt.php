@@ -62,6 +62,7 @@
               <?php endforeach; ?>
               <tr>
                 <td colspan="3"align="right">
+                <input type="hidden" name="role_id" value="<?= $role_id ?>">
                 <a href="<?= base_url('kuisioner/penilaian')?>" class="btn btn-warning">Kembali</a>
                 &nbsp;&nbsp;<input type="submit" value="Simpan" name="submit" class="btn btn-success"></td>
                     </tr>

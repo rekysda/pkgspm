@@ -39,6 +39,7 @@ class Kuisioner extends CI_Controller
    $tujuan_id])->row_array();
    $data['namagurutujuan']=$data['usertujuan']['name'];
    $role_id=$data['user']['role_id'];
+   $data['role_id']=$data['user']['role_id'];
    $data['listkategori'] = $this->Kuisioner_model->get_listkategori($role_id);
    $data['listquestion'] = $this->Kuisioner_model->get_listquestion($role_id);
    $data['user_asal']= $data['user']['id'];
@@ -57,6 +58,7 @@ class Kuisioner extends CI_Controller
       $soal_id = $this->input->post('soal_id');
       $user_asal = $this->input->post('user_asal');
       $user_tujuan = $this->input->post('user_tujuan');
+      $role_id = $this->input->post('role_id');
       $jawaban = $this->input->post('jawaban');
   
       $this->db->where('user_tujuan', $user_tujuan);
@@ -69,7 +71,8 @@ class Kuisioner extends CI_Controller
             'soal_id'     =>  $soal_id[$key],
             'user_asal'     =>  $user_asal,
             'user_tujuan'     =>  $user_tujuan,
-            'jawaban'     =>  $jawaban[$key]
+            'jawaban'     =>  $jawaban[$key],
+            'role_id'     =>  $role_id
           ];
           $this->db->insert('bank_penilaian', $datadetail);
       }
@@ -123,6 +126,7 @@ class Kuisioner extends CI_Controller
    $data['namagurutujuan']=$data['usertujuan']['name'];
    $this->load->model('Kuisioner_model', 'Kuisioner_model');
    $data['listkategori'] = $this->Kuisioner_model->get_listkategoriuser($usertujuan_id);
+   $data['list_role'] = $this->Kuisioner_model->get_listrole();
    $this->load->view('themes/backend/header', $data);
    $this->load->view('themes/backend/sidebar', $data);
    $this->load->view('themes/backend/topbar', $data);

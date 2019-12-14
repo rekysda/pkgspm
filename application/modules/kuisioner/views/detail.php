@@ -26,6 +26,10 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Kategori</th>
+                <?php foreach ($list_role as $dtr) : ?>
+                  <th scope="col">
+                  <?= $dtr['role'] ?></th>
+                  <?php endforeach; ?>
                 <th scope="col">Penilaian%</th>
               </tr>
               <?php $i = 1; ?>
@@ -33,6 +37,16 @@
                 <tr>
                   <th scope="row"><?= $i; ?></th>
                   <td><?= $dt['kategori']; ?></td>
+                  <?php foreach ($list_role as $dtr) : ?>
+                    <?php
+                  $jumlahjawabanrole=get_jumlahnilaiguru_role($dt['user_tujuan'],$dt['kategori_id'],$dtr['id']);
+                  $jumlahsoalrole=get_jumlahsoalguru_role($dt['user_tujuan'],$dt['kategori_id'],$dtr['id']);
+                  $jumlahmaksnilairole=$jumlahsoalrole*4;
+                   $penilaianrole = round(($jumlahjawabanrole/$jumlahmaksnilairole)*100);
+                   
+                  ?>
+                  <th scope="col"><?= $penilaianrole ?></th>
+                  <?php endforeach; ?>
                   <td>
                   <?php 
                    $jumlahjawaban=get_jumlahnilaiguru_det($dt['user_tujuan'],$dt['kategori_id']);
@@ -47,7 +61,11 @@
                   <?php $rata= round($total/$i); ?>
                   <?php $i++; ?>
               <?php endforeach; ?>
-              <tr><td colspan="2"align="right"><b>Rata</b></td><td><b><?= $rata; ?></b></td></tr>
+              <tr>
+              <?php foreach ($list_role as $dtr) : ?>
+                  <td scope="col"></td>
+                  <?php endforeach; ?>  
+              <td colspan="2"align="right"><b>Rata</b></td><td><b><?= $rata; ?></b></td></tr>
     </table>
     <a href="<?= base_url('kuisioner/laporan')?>"target="new"class="btn btn-success">Kembali</a>&nbsp;&nbsp;
     <a href="<?= base_url('kuisioner/cetaklaporandetail/'.$dt['user_tujuan'])?>"target="new"class="btn btn-primary">Cetak</a>

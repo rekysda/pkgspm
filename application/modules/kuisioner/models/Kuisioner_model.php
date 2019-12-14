@@ -47,6 +47,7 @@ class Kuisioner_model extends CI_Model
     $this->db->select('user_role.*');
     $this->db->from('user_role');
     $this->db->group_by('user_role.id','asc');
+    return $this->db->get()->result_array();
   }
   public function get_listuserpenilai($id)
   {

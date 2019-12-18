@@ -18,7 +18,7 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Tujuan : <?= $namagurutujuan;?></h3>
+        <h3 class="box-title">Tujuan : <?= $namagurutujuan;?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= $bulanpenilaian ?></h3>
       </div>
       <div class="box-body">
         <div class="table-responsive">
@@ -63,6 +63,8 @@
               <tr>
                 <td colspan="3"align="right">
                 <input type="hidden" name="role_id" value="<?= $role_id ?>">
+                <input type="hidden" name="tahunpenilaian" value="<?= $tahunpenilaian ?>">
+                <input type="hidden" name="bulanpenilaian" value="<?= $bulanpenilaian ?>">
                 <a href="<?= base_url('kuisioner/penilaian')?>" class="btn btn-warning">Kembali</a>
                 &nbsp;&nbsp;<input type="submit" value="Simpan" name="submit" class="btn btn-success"></td>
                     </tr>

@@ -18,7 +18,7 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Guru : <?= $namagurutujuan;?></h3>
+        <h3 class="box-title">Guru : <?= $namagurutujuan;?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= $bulanpenilaian ?></h3>
       </div>
       <div class="box-body">
         <div class="table-responsive">
@@ -39,16 +39,16 @@
                   <th scope="row"><?= $i; ?></th>
                   <td><?= $dt['kategori']; ?></td>
                   <?php                 
-                  $jumlahjawabanrolesendiri=get_jumlahnilaiguru_rolesendiri($dt['user_tujuan'],$dt['kategori_id']);
-                  $jumlahsoalrolesendiri=get_jumlahsoalguru_rolesendiri($dt['user_tujuan'],$dt['kategori_id']);
+                  $jumlahjawabanrolesendiri=get_jumlahnilaiguru_rolesendiri($dt['user_tujuan'],$dt['kategori_id'],$tahunpenilaian,$bulanpenilaian);
+                  $jumlahsoalrolesendiri=get_jumlahsoalguru_rolesendiri($dt['user_tujuan'],$dt['kategori_id'],$tahunpenilaian,$bulanpenilaian);
                   $jumlahmaksnilairolesendiri=$jumlahsoalrolesendiri*4;
                   $penilaianrolesendiri = round(($jumlahjawabanrolesendiri/$jumlahmaksnilairolesendiri)*100);
                   ?>
                   <th scope="col"><?= $penilaianrolesendiri ?></th>
                   <?php foreach ($list_role as $dtr) : ?>
                     <?php                 
-                  $jumlahjawabanrole=get_jumlahnilaiguru_role($dt['user_tujuan'],$dt['kategori_id'],$dtr['id']);
-                  $jumlahsoalrole=get_jumlahsoalguru_role($dt['user_tujuan'],$dt['kategori_id'],$dtr['id']);
+                  $jumlahjawabanrole=get_jumlahnilaiguru_role($dt['user_tujuan'],$dt['kategori_id'],$dtr['id'],$tahunpenilaian,$bulanpenilaian);
+                  $jumlahsoalrole=get_jumlahsoalguru_role($dt['user_tujuan'],$dt['kategori_id'],$dtr['id'],$tahunpenilaian,$bulanpenilaian);
                   $jumlahmaksnilairole=$jumlahsoalrole*4;
                   $penilaianrole = round(($jumlahjawabanrole/$jumlahmaksnilairole)*100);
                   ?>
@@ -56,8 +56,8 @@
                   <?php endforeach; ?>
                   <td>
                   <?php 
-                   $jumlahjawaban=get_jumlahnilaiguru_det($dt['user_tujuan'],$dt['kategori_id']);
-                   $jumlahsoal=get_jumlahsoalguru_det($dt['user_tujuan'],$dt['kategori_id']);
+                   $jumlahjawaban=get_jumlahnilaiguru_det($dt['user_tujuan'],$dt['kategori_id'],$tahunpenilaian,$bulanpenilaian);
+                   $jumlahsoal=get_jumlahsoalguru_det($dt['user_tujuan'],$dt['kategori_id'],$tahunpenilaian,$bulanpenilaian);
                    $jumlahmaksnilai=$jumlahsoal*4;
                    $penilaian = round(($jumlahjawaban/$jumlahmaksnilai)*100);
                    $total +=$penilaian;

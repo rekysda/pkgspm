@@ -19,7 +19,7 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">List</h3>
+        <h3 class="box-title">List Penilaian, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= $bulanpenilaian ?></h3>
       </div>
       <div class="box-body">
         <div class="table-responsive">
@@ -39,8 +39,8 @@
                   <th scope="row"><?= $i; ?></th>
                   <td><?= $dt['name']; ?></td>
                   <?php 
-                  $jumlahjawaban=get_jumlahnilaiguru($dt['id']);
-                  $jumlahsoal=get_jumlahsoalguru($dt['id']);
+                  $jumlahjawaban=get_jumlahnilaiguru($dt['id'],$tahunpenilaian,$bulanpenilaian);
+                  $jumlahsoal=get_jumlahsoalguru($dt['id'],$tahunpenilaian,$bulanpenilaian);
                   $jumlahmaksnilai=$jumlahsoal*4;
                   $penilaian = round(($jumlahjawaban/$jumlahmaksnilai)*100);
                   ?>

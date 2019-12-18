@@ -16,6 +16,12 @@ class Kuisioner extends CI_Controller
    $data['title'] = 'Penilaian';
    $data['user'] = $this->db->get_where('user', ['email' =>
    $this->session->userdata('email')])->row_array();
+   $tahunpenilaian = $this->db->get_where('options', ['name' =>
+   'tahunpenilaian'])->row_array();
+  $data['tahunpenilaian']=$tahunpenilaian['value'];
+   $bulanpenilaian = $this->db->get_where('options', ['name' =>
+   'bulanpenilaian'])->row_array();
+  $data['bulanpenilaian']=$bulanpenilaian['value'];
    $this->load->model('Kuisioner_model', 'Kuisioner_model');
    $iduserasal = $data['user']['id'];
    $data['listuser'] = $this->Kuisioner_model->get_listuser($iduserasal);
@@ -33,6 +39,13 @@ class Kuisioner extends CI_Controller
    $data['title'] = 'Penilaian';
    $data['user'] = $this->db->get_where('user', ['email' =>
    $this->session->userdata('email')])->row_array();
+   $tahunpenilaian = $this->db->get_where('options', ['name' =>
+   'tahunpenilaian'])->row_array();
+  $data['tahunpenilaian']=$tahunpenilaian['value'];
+   $bulanpenilaian = $this->db->get_where('options', ['name' =>
+   'bulanpenilaian'])->row_array();
+  $data['bulanpenilaian']=$bulanpenilaian['value'];
+
    $this->load->model('Kuisioner_model', 'Kuisioner_model');
    $iduserasal = $data['user']['id'];
    $data['usertujuan'] = $this->db->get_where('user', ['id' =>
@@ -65,6 +78,8 @@ class Kuisioner extends CI_Controller
       $user_tujuan = $this->input->post('user_tujuan');
       $role_id = $this->input->post('role_id');
       $jawaban = $this->input->post('jawaban');
+      $tahunpenilaian = $this->input->post('tahunpenilaian');
+      $bulanpenilaian = $this->input->post('bulanpenilaian');
   
       $this->db->where('user_tujuan', $user_tujuan);
       $this->db->where('user_asal', $user_asal);
@@ -77,7 +92,9 @@ class Kuisioner extends CI_Controller
             'user_asal'     =>  $user_asal,
             'user_tujuan'     =>  $user_tujuan,
             'jawaban'     =>  $jawaban[$key],
-            'role_id'     =>  $role_id
+            'role_id'     =>  $role_id,
+            'tahunpenilaian'     =>  $tahunpenilaian,
+            'bulanpenilaian'     =>  $bulanpenilaian,
           ];
           $this->db->insert('bank_penilaian', $datadetail);
       }
@@ -91,6 +108,13 @@ class Kuisioner extends CI_Controller
    $data['title'] = 'Laporan';
    $data['user'] = $this->db->get_where('user', ['email' =>
    $this->session->userdata('email')])->row_array();
+   $tahunpenilaian = $this->db->get_where('options', ['name' =>
+   'tahunpenilaian'])->row_array();
+  $data['tahunpenilaian']=$tahunpenilaian['value'];
+   $bulanpenilaian = $this->db->get_where('options', ['name' =>
+   'bulanpenilaian'])->row_array();
+  $data['bulanpenilaian']=$bulanpenilaian['value'];
+
    $this->load->model('Kuisioner_model', 'Kuisioner_model');
    $iduserasal = $data['user']['id'];
    $data['listuser'] = $this->Kuisioner_model->get_listuser($iduserasal);
@@ -108,6 +132,13 @@ class Kuisioner extends CI_Controller
    $data['title'] = 'Laporan Penilaian Guru';
    $data['user'] = $this->db->get_where('user', ['email' =>
    $this->session->userdata('email')])->row_array();
+   $tahunpenilaian = $this->db->get_where('options', ['name' =>
+   'tahunpenilaian'])->row_array();
+  $data['tahunpenilaian']=$tahunpenilaian['value'];
+   $bulanpenilaian = $this->db->get_where('options', ['name' =>
+   'bulanpenilaian'])->row_array();
+  $data['bulanpenilaian']=$bulanpenilaian['value'];
+
    $this->load->model('Kuisioner_model', 'Kuisioner_model');
    $iduserasal = $data['user']['id'];
    $data['listuser'] = $this->Kuisioner_model->get_listuser($iduserasal);
@@ -126,6 +157,13 @@ class Kuisioner extends CI_Controller
    $data['title'] = 'Laporan';
    $data['user'] = $this->db->get_where('user', ['email' =>
    $this->session->userdata('email')])->row_array();
+   $tahunpenilaian = $this->db->get_where('options', ['name' =>
+   'tahunpenilaian'])->row_array();
+  $data['tahunpenilaian']=$tahunpenilaian['value'];
+   $bulanpenilaian = $this->db->get_where('options', ['name' =>
+   'bulanpenilaian'])->row_array();
+  $data['bulanpenilaian']=$bulanpenilaian['value'];
+
    $data['usertujuan'] = $this->db->get_where('user', ['id' =>
    $usertujuan_id])->row_array();
    $data['user_tujuan']=$data['usertujuan']['id'];
@@ -147,6 +185,13 @@ class Kuisioner extends CI_Controller
    $data['title'] = 'Laporan Penilaian Guru Detail';
    $data['user'] = $this->db->get_where('user', ['email' =>
    $this->session->userdata('email')])->row_array();
+   $tahunpenilaian = $this->db->get_where('options', ['name' =>
+   'tahunpenilaian'])->row_array();
+  $data['tahunpenilaian']=$tahunpenilaian['value'];
+   $bulanpenilaian = $this->db->get_where('options', ['name' =>
+   'bulanpenilaian'])->row_array();
+  $data['bulanpenilaian']=$bulanpenilaian['value'];
+
    $data['usertujuan'] = $this->db->get_where('user', ['id' =>
    $usertujuan_id])->row_array();
    $data['namagurutujuan']=$data['usertujuan']['name'];
@@ -166,6 +211,13 @@ class Kuisioner extends CI_Controller
    $data['title'] = 'Hapus Penilaian';
    $data['user'] = $this->db->get_where('user', ['email' =>
    $this->session->userdata('email')])->row_array();
+   $tahunpenilaian = $this->db->get_where('options', ['name' =>
+   'tahunpenilaian'])->row_array();
+  $data['tahunpenilaian']=$tahunpenilaian['value'];
+   $bulanpenilaian = $this->db->get_where('options', ['name' =>
+   'bulanpenilaian'])->row_array();
+  $data['bulanpenilaian']=$bulanpenilaian['value'];
+
    $this->load->model('Kuisioner_model', 'Kuisioner_model');
    $iduserasal = $data['user']['id'];
    $data['listuser'] = $this->Kuisioner_model->get_listuser($iduserasal);
@@ -180,6 +232,15 @@ class Kuisioner extends CI_Controller
  }
  public function hapus_nilai($id)
   {
+    $tahunpenilaian = $this->db->get_where('options', ['name' =>
+    'tahunpenilaian'])->row_array();
+   $tahunpenilaian=$tahunpenilaian['value'];
+    $bulanpenilaian = $this->db->get_where('options', ['name' =>
+    'bulanpenilaian'])->row_array();
+   $bulanpenilaian=$bulanpenilaian['value'];
+
+   $this->db->where('tahunpenilaian', $tahunpenilaian);
+   $this->db->where('bulanpenilaian', $bulanpenilaian);
     $this->db->where('user_tujuan', $id);
     $this->db->delete('bank_penilaian');
     $this->session->set_flashdata('message', '<div class="alert alert-success" role"alert">Data deleted !</div>');
@@ -191,6 +252,13 @@ class Kuisioner extends CI_Controller
     $data['title'] = 'Hapus Penilaian';
     $data['user'] = $this->db->get_where('user', ['email' =>
     $this->session->userdata('email')])->row_array();
+    $tahunpenilaian = $this->db->get_where('options', ['name' =>
+    'tahunpenilaian'])->row_array();
+   $data['tahunpenilaian']=$tahunpenilaian['value'];
+    $bulanpenilaian = $this->db->get_where('options', ['name' =>
+    'bulanpenilaian'])->row_array();
+   $data['bulanpenilaian']=$bulanpenilaian['value'];
+
     $this->load->model('Kuisioner_model', 'Kuisioner_model');
 
     $data['listuserpenilai'] = $this->Kuisioner_model->get_listuserpenilai($id);
@@ -206,6 +274,15 @@ class Kuisioner extends CI_Controller
 
   public function hapus_nilaiuser($id,$user_tujuan)
   {
+    $tahunpenilaian = $this->db->get_where('options', ['name' =>
+    'tahunpenilaian'])->row_array();
+   $tahunpenilaian=$tahunpenilaian['value'];
+    $bulanpenilaian = $this->db->get_where('options', ['name' =>
+    'bulanpenilaian'])->row_array();
+   $bulanpenilaian=$bulanpenilaian['value'];
+
+   $this->db->where('tahunpenilaian', $tahunpenilaian);
+   $this->db->where('bulanpenilaian', $bulanpenilaian);
     $this->db->where('user_tujuan', $user_tujuan);
     $this->db->where('user_asal', $id);
     $this->db->delete('bank_penilaian');

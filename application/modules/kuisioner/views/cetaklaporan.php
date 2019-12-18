@@ -47,7 +47,7 @@
 		font-size: 24px;
 	}
 </style>
-<h4> <?= $title; ?></h4>
+<h4> <?= $title; ?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= $bulanpenilaian ?></h4>
 <table id="tablestd">
               <tr>
                 <td >#</td>
@@ -62,8 +62,8 @@
                   <td>
 
                   <?php 
-                  $jumlahjawaban=get_jumlahnilaiguru($dt['id']);
-                  $jumlahsoal=get_jumlahsoalguru($dt['id']);
+                  $jumlahjawaban=get_jumlahnilaiguru($dt['id'],$tahunpenilaian,$bulanpenilaian);
+                  $jumlahsoal=get_jumlahsoalguru($dt['id'],$tahunpenilaian,$bulanpenilaian);
                   $jumlahmaksnilai=$jumlahsoal*4;
                   $penilaian = round(($jumlahjawaban/$jumlahmaksnilai)*100);
                   ?>

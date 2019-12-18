@@ -48,7 +48,7 @@
 	}
 </style>
 <b> <?= $title; ?></b>
-<b class="box-title">Guru : <?= $namagurutujuan;?></b>
+<b class="box-title">Guru : <?= $namagurutujuan;?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= $bulanpenilaian ?></b>
 <table id="tablestd">
               <tr>
                 <td >#</td>
@@ -62,8 +62,8 @@
                   <td><?= $dt['kategori']; ?></td>
                   <td>
                   <?php 
-                   $jumlahjawaban=get_jumlahnilaiguru_det($dt['user_tujuan'],$dt['kategori_id']);
-                   $jumlahsoal=get_jumlahsoalguru_det($dt['user_tujuan'],$dt['kategori_id']);
+                   $jumlahjawaban=get_jumlahnilaiguru_det($dt['user_tujuan'],$dt['kategori_id'],$tahunpenilaian,$bulanpenilaian);
+                   $jumlahsoal=get_jumlahsoalguru_det($dt['user_tujuan'],$dt['kategori_id'],$tahunpenilaian,$bulanpenilaian);
                    $jumlahmaksnilai=$jumlahsoal*4;
                    $penilaian = round(($jumlahjawaban/$jumlahmaksnilai)*100);
                    $total +=$penilaian;

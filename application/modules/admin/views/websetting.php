@@ -93,6 +93,32 @@
                 <?= form_error('smtp_port', '<span class="help-block">', '</span>') ?>
               </div>
             </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Tahun Penilaian</label>
+              <div class="col-sm-10">
+                <input type="number" name="option[tahunpenilaian]" value="<?= options('tahunpenilaian') == '' ? set_value('tahunpenilaian') : options('tahunpenilaian'); ?>" class="form-control" placeholder="Tahun Penilaian">
+                <?= form_error('tahunpenilaian', '<span class="help-block">', '</span>') ?>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Registration</label>
+              <div class="col-sm-10">
+                <select name="option[bulanpenilaian]" class="form-control <?= form_error('bulanpenilaian') ? 'is-invalid' : '' ?>">
+                  <option value="01" <?= options('bulanpenilaian') == 01 ? 'selected' : null ?>>Januari</option>
+                  <option value="02" <?= options('bulanpenilaian') == 02 ? 'selected' : null ?>>Februari</option>
+                  <option value="03" <?= options('bulanpenilaian') == 03 ? 'selected' : null ?>>Maret</option>
+                  <option value="04" <?= options('bulanpenilaian') == 04 ? 'selected' : null ?>>April</option>
+                  <option value="05" <?= options('bulanpenilaian') == 05 ? 'selected' : null ?>>Mei</option>
+                  <option value="06" <?= options('bulanpenilaian') == 06 ? 'selected' : null ?>>Juni</option>
+                  <option value="07" <?= options('bulanpenilaian') == 07 ? 'selected' : null ?>>Juli</option>
+                  <option value="08" <?= options('bulanpenilaian') == 08 ? 'selected' : null ?>>Agustus</option>
+                  <option value="09" <?= options('bulanpenilaian') == 09 ? 'selected' : null ?>>September</option>
+                  <option value="10" <?= options('bulanpenilaian') == 10 ? 'selected' : null ?>>Oktober</option>
+                  <option value="11" <?= options('bulanpenilaian') == 11 ? 'selected' : null ?>>Nopember</option>
+                  <option value="12" <?= options('bulanpenilaian') ==12 ? 'selected' : null ?>>Desember</option>
+                </select>
+              </div>
+            </div>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">

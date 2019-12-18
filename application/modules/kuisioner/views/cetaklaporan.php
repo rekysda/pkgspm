@@ -47,7 +47,7 @@
 		font-size: 24px;
 	}
 </style>
-<h4> <?= $title; ?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= $bulanpenilaian ?></h4>
+<h4> <?= $title; ?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= getbulanindo($bulanpenilaian) ?></h4>
 <table id="tablestd">
               <tr>
                 <td >#</td>

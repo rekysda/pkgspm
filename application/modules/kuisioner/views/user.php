@@ -19,7 +19,7 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">List <?= $title; ?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= $bulanpenilaian ?></h3>
+        <h3 class="box-title">List <?= $title; ?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= getbulanindo($bulanpenilaian) ?></h3>
       </div>
       <div class="box-body">
         <div class="table-responsive">
@@ -39,7 +39,7 @@
                   <td><?= $dt['name']; ?></td>
                   <td>
 
-                  <?php $jumlahjawaban=get_jumlahnilai($user_asal,$dt['id']);?>
+                  <?php $jumlahjawaban=get_jumlahnilai($user_asal,$dt['id'],$tahunpenilaian,$bulanpenilaian);?>
                   <?php
                   if($jumlahjawaban<'1'){ ?>
                     <a href="<?= base_url('kuisioner/add_attempt/') . $dt['id']; ?>" class="btn btn-primary btn-xs">Attempt</a>

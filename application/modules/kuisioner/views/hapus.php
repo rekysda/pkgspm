@@ -19,7 +19,7 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">List Penilaian, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= $bulanpenilaian ?></h3>
+        <h3 class="box-title">List Penilaian, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= getbulanindo($bulanpenilaian) ?></h3>
       </div>
       <div class="box-body">
         <div class="table-responsive">

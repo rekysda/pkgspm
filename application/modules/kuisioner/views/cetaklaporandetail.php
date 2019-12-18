@@ -48,7 +48,7 @@
 	}
 </style>
 <b> <?= $title; ?></b>
-<b class="box-title">Guru : <?= $namagurutujuan;?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= $bulanpenilaian ?></b>
+<b class="box-title">Guru : <?= $namagurutujuan;?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= getbulanindo($bulanpenilaian) ?></b>
 <table id="tablestd">
               <tr>
                 <td >#</td>

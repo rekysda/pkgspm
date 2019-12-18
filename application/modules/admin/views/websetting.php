@@ -104,15 +104,15 @@
               <label class="col-sm-2 control-label">Registration</label>
               <div class="col-sm-10">
                 <select name="option[bulanpenilaian]" class="form-control <?= form_error('bulanpenilaian') ? 'is-invalid' : '' ?>">
-                  <option value="01" <?= options('bulanpenilaian') == 01 ? 'selected' : null ?>>Januari</option>
-                  <option value="02" <?= options('bulanpenilaian') == 02 ? 'selected' : null ?>>Februari</option>
-                  <option value="03" <?= options('bulanpenilaian') == 03 ? 'selected' : null ?>>Maret</option>
-                  <option value="04" <?= options('bulanpenilaian') == 04 ? 'selected' : null ?>>April</option>
-                  <option value="05" <?= options('bulanpenilaian') == 05 ? 'selected' : null ?>>Mei</option>
-                  <option value="06" <?= options('bulanpenilaian') == 06 ? 'selected' : null ?>>Juni</option>
-                  <option value="07" <?= options('bulanpenilaian') == 07 ? 'selected' : null ?>>Juli</option>
-                  <option value="08" <?= options('bulanpenilaian') == 08 ? 'selected' : null ?>>Agustus</option>
-                  <option value="09" <?= options('bulanpenilaian') == 09 ? 'selected' : null ?>>September</option>
+                  <option value="1" <?= options('bulanpenilaian') == 1 ? 'selected' : null ?>>Januari</option>
+                  <option value="2" <?= options('bulanpenilaian') == 2 ? 'selected' : null ?>>Februari</option>
+                  <option value="3" <?= options('bulanpenilaian') == 3 ? 'selected' : null ?>>Maret</option>
+                  <option value="4" <?= options('bulanpenilaian') == 4 ? 'selected' : null ?>>April</option>
+                  <option value="5" <?= options('bulanpenilaian') == 5 ? 'selected' : null ?>>Mei</option>
+                  <option value="6" <?= options('bulanpenilaian') == 6 ? 'selected' : null ?>>Juni</option>
+                  <option value="7" <?= options('bulanpenilaian') == 7 ? 'selected' : null ?>>Juli</option>
+                  <option value="8" <?= options('bulanpenilaian') == 8 ? 'selected' : null ?>>Agustus</option>
+                  <option value="9" <?= options('bulanpenilaian') == 9 ? 'selected' : null ?>>September</option>
                   <option value="10" <?= options('bulanpenilaian') == 10 ? 'selected' : null ?>>Oktober</option>
                   <option value="11" <?= options('bulanpenilaian') == 11 ? 'selected' : null ?>>Nopember</option>
                   <option value="12" <?= options('bulanpenilaian') ==12 ? 'selected' : null ?>>Desember</option>

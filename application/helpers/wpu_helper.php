@@ -378,22 +378,26 @@ function generatekodeinc4($table,$kodeawal,$kode) {
         }
     }
 
-    function get_jumlahnilai($user_asal,$user_tujuan)
+    function get_jumlahnilai($user_asal,$user_tujuan,$tahunpenilaian,$bulanpenilaian)
 {
     $ci = get_instance();
     $ci->db->select('sum(jawaban) as value');
     $ci->db->from('bank_penilaian');
     $ci->db->where('user_asal', $user_asal);
     $ci->db->where('user_tujuan', $user_tujuan);
+    $ci->db->where('tahunpenilaian', $tahunpenilaian);
+    $ci->db->where('bulanpenilaian', $bulanpenilaian);
     return $ci->db->get()->row()->value;
 }
-function get_jumlahsoal($user_asal,$user_tujuan)
+function get_jumlahsoal($user_asal,$user_tujuan,$tahunpenilaian,$bulanpenilaian)
 {
     $ci = get_instance();
     $ci->db->select('count(id) as value');
     $ci->db->from('bank_penilaian');
     $ci->db->where('user_asal', $user_asal);
     $ci->db->where('user_tujuan', $user_tujuan);
+    $ci->db->where('tahunpenilaian', $tahunpenilaian);
+    $ci->db->where('bulanpenilaian', $bulanpenilaian);
     return $ci->db->get()->row()->value;
 }
 function get_jumlahnilaiguru($user_tujuan,$tahunpenilaian,$bulanpenilaian)

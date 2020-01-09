@@ -183,9 +183,9 @@ class Admin extends CI_Controller
 
             if ($upload_image) {
                 $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size']     = '200';
+                $config['max_size']     = '1024';
                 $config['upload_path'] = './assets/images/profile/';
-                $config['file_name'] = round(microtime(true) * 1000);
+                $config['file_name'] = date('ymdhis');
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('image')) {
                     $old_image = $data['getuserlogin']['image'];
@@ -194,6 +194,18 @@ class Admin extends CI_Controller
                     }
                     $new_image = $this->upload->data('file_name');
                     $this->db->set('image', $new_image);
+                    //Compress Image
+                     $config['image_library']='gd2';
+                     $config['source_image']='./assets/images/profile/'.$new_image;
+                     $config['create_thumb']= FALSE;
+                     $config['maintain_ratio']= FALSE;
+                     $config['quality']= '100%';
+                     $config['width']= 300;
+                     $config['height']= 400;
+                     $config['new_image']= './assets/images/profile/'.$new_image;
+                     $this->load->library('image_lib', $config);
+                     $this->image_lib->resize();     
+
                 } else {
                     echo  $this->upload->display_errors();
                 }

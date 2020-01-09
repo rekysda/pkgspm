@@ -169,6 +169,7 @@ class Kuisioner extends CI_Controller
    $data['user_tujuan']=$data['usertujuan']['id'];
    $data['user_asal']=$data['user']['id'];
    $data['namagurutujuan']=$data['usertujuan']['name'];
+   $data['imagegurutujuan']=$data['usertujuan']['image'];
    $this->load->model('Kuisioner_model', 'Kuisioner_model');
    $data['listkategori'] = $this->Kuisioner_model->get_listkategoriuser($usertujuan_id);
    $data['list_role'] = $this->Kuisioner_model->get_listrole();
@@ -195,6 +196,7 @@ class Kuisioner extends CI_Controller
    $data['usertujuan'] = $this->db->get_where('user', ['id' =>
    $usertujuan_id])->row_array();
    $data['namagurutujuan']=$data['usertujuan']['name'];
+   $data['imagegurutujuan']=$data['usertujuan']['image'];
    $this->load->model('Kuisioner_model', 'Kuisioner_model');
    $data['listkategori'] = $this->Kuisioner_model->get_listkategoriuser($usertujuan_id);
  //  $this->load->view('cetaklaporandetail', $data);

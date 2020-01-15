@@ -21,6 +21,11 @@
         <h3 class="box-title">Guru : <?= $namagurutujuan;?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= getbulanindo($bulanpenilaian) ?></h3>
       </div> 
       <div class="box-body">
+      <div class="row">
+      <div class="col-lg-3">
+<img src="<?= base_url('./assets/images/profile/'.$imagegurutujuan) ?>"height="100%">
+</div>
+          <div class="col-lg-9">
         <div class="table-responsive">
         <table class="table table-hover">
               <tr>
@@ -77,6 +82,8 @@
     <a href="<?= base_url('kuisioner/laporan')?>"target="new"class="btn btn-success">Kembali</a>&nbsp;&nbsp;
     <a href="<?= base_url('kuisioner/cetaklaporandetail/'.$dt['user_tujuan'])?>"target="new"class="btn btn-primary">Cetak</a>
         </div>
+
+</div>
         <!-- /.box-body -->
       </div>
       <!-- /.box -->

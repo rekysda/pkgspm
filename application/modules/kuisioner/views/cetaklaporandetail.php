@@ -49,6 +49,9 @@
 </style>
 <b> <?= $title; ?></b>
 <b class="box-title">Guru : <?= $namagurutujuan;?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= getbulanindo($bulanpenilaian) ?></b>
+<table><tr><td valign="top">
+<img src="<?= base_url('assets/images/profile/'.$imagegurutujuan) ?>"height="150px">
+</td><td>
 <table id="tablestd">
               <tr>
                 <td >#</td>
@@ -75,4 +78,5 @@
                   <?php $i++; ?>
               <?php endforeach; ?>
               <tr><td colspan="2"align="right"><b>Rata</b></td><td><b><?= $rata; ?></b></td></tr>
-    </table>
+	</table>
+			  </td></tr></table>

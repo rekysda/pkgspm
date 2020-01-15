@@ -28,6 +28,7 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Guru</th>
+                <th scope="col">Image</th>
                 <th scope="col">Penilaian%</th>
                 <th scope="col">Aksi</th>
               </tr>
@@ -38,6 +39,7 @@
                 <tr>
                   <th scope="row"><?= $i; ?></th>
                   <td><?= $dt['name']; ?></td>
+                  <td><img src="<?= base_url('assets/images/profile/'. $dt['image'])?>"width="30px"></td>
                   <td>
 
                   <?php 

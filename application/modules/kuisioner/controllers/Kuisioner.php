@@ -33,7 +33,7 @@ class Kuisioner extends CI_Controller
    $this->load->view('themes/backend/footer');
    $this->load->view('themes/backend/footerajax');
    
- }
+ } 
  public function add_attempt($tujuan_id)
  {
    $data['title'] = 'Penilaian';
@@ -194,9 +194,12 @@ class Kuisioner extends CI_Controller
 
    $data['usertujuan'] = $this->db->get_where('user', ['id' =>
    $usertujuan_id])->row_array();
+   $data['user_tujuan']=$data['usertujuan']['id'];
+   $data['user_asal']=$data['user']['id'];
    $data['namagurutujuan']=$data['usertujuan']['name'];
    $this->load->model('Kuisioner_model', 'Kuisioner_model');
    $data['listkategori'] = $this->Kuisioner_model->get_listkategoriuser($usertujuan_id);
+   $data['list_role'] = $this->Kuisioner_model->get_listrole();
  //  $this->load->view('cetaklaporandetail', $data);
  $html = $this->load->view('cetaklaporandetail', $data, true);
  // create pdf using dompdf

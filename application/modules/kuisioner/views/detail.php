@@ -19,7 +19,7 @@
     <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title">Guru : <?= $namagurutujuan;?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= getbulanindo($bulanpenilaian) ?></h3>
-      </div>
+      </div> 
       <div class="box-body">
         <div class="table-responsive">
         <table class="table table-hover">

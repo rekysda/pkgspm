@@ -22,7 +22,9 @@
         <h3 class="box-title">List Penilaian , Tahun : <?= $tahunpenilaian ?>, Bulan : <?= getbulanindo($bulanpenilaian) ?></h3>
       </div>
       <div class="box-body">
-        <div class="table-responsive">
+      <div class="col-lg-2">
+<img src="<?= base_url('./assets/images/profile/'.$imagegurutujuan) ?>"height="150px">
+</div>
           <table class="table table-hover">
             <thead>
               <tr>

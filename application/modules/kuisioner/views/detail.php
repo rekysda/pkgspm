@@ -22,8 +22,8 @@
       </div> 
       <div class="box-body">
       <div class="row">
-      <div class="col-lg-3">
-<img src="<?= base_url('./assets/images/profile/'.$imagegurutujuan) ?>"height="100%">
+      <div class="col-lg-2">
+<img src="<?= base_url('./assets/images/profile/'.$imagegurutujuan) ?>"height="150px">
 </div>
           <div class="col-lg-9">
         <div class="table-responsive">

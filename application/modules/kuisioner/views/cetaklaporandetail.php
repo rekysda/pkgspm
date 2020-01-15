@@ -54,15 +54,36 @@
 </td><td>
 <table id="tablestd">
               <tr>
-                <td >#</td>
-                <td >Kategori</td>
-                <td >Penilaian</td>
+                <td scope="col">#</td>
+                <td scope="col">Kategori</td>
+                <td scope="col">DiriSendiri</td>
+                <?php foreach ($list_role as $dtr) : ?>
+                  <td scope="col">
+                  <?= $dtr['role'] ?></td>
+                  <?php endforeach; ?>
+                <td scope="col">Penilaian</td>
               </tr>
               <?php $i = 1; ?>
               <?php foreach ($listkategori as $dt) : ?>
                 <tr>
-                  <td><?= $i; ?></td>
+                  <td scope="row"><?= $i; ?></td>
                   <td><?= $dt['kategori']; ?></td>
+                  <?php                 
+                  $jumlahjawabanrolesendiri=get_jumlahnilaiguru_rolesendiri($dt['user_tujuan'],$dt['kategori_id'],$tahunpenilaian,$bulanpenilaian);
+                  $jumlahsoalrolesendiri=get_jumlahsoalguru_rolesendiri($dt['user_tujuan'],$dt['kategori_id'],$tahunpenilaian,$bulanpenilaian);
+                  $jumlahmaksnilairolesendiri=$jumlahsoalrolesendiri*4;
+                  $penilaianrolesendiri = round(($jumlahjawabanrolesendiri/$jumlahmaksnilairolesendiri)*100);
+                  ?>
+                  <td scope="col"><?= $penilaianrolesendiri ?></td>
+                  <?php foreach ($list_role as $dtr) : ?>
+                    <?php                 
+                  $jumlahjawabanrole=get_jumlahnilaiguru_role($dt['user_tujuan'],$dt['kategori_id'],$dtr['id'],$tahunpenilaian,$bulanpenilaian);
+                  $jumlahsoalrole=get_jumlahsoalguru_role($dt['user_tujuan'],$dt['kategori_id'],$dtr['id'],$tahunpenilaian,$bulanpenilaian);
+                  $jumlahmaksnilairole=$jumlahsoalrole*4;
+                  $penilaianrole = round(($jumlahjawabanrole/$jumlahmaksnilairole)*100);
+                  ?>
+                  <td scope="col"><?= $penilaianrole ?></td>
+                  <?php endforeach; ?>
                   <td>
                   <?php 
                    $jumlahjawaban=get_jumlahnilaiguru_det($dt['user_tujuan'],$dt['kategori_id'],$tahunpenilaian,$bulanpenilaian);
@@ -77,6 +98,9 @@
                   <?php $rata= round($total/$i); ?>
                   <?php $i++; ?>
               <?php endforeach; ?>
-              <tr><td colspan="2"align="right"><b>Rata</b></td><td><b><?= $rata; ?></b></td></tr>
-	</table>
-			  </td></tr></table>
+              <tr>
+              <?php foreach ($list_role as $dtr) : ?>
+                  <td scope="col"></td>
+                  <?php endforeach; ?>  
+              <td colspan="3"align="right"><b>Rata</b></td><td><b><?= $rata; ?></b></td></tr>
+    </table>

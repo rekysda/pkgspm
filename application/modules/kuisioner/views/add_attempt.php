@@ -18,7 +18,15 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Tujuan : <?= $namagurutujuan;?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= getbulanindo($bulanpenilaian) ?></h3>
+      <table>
+      <tr><td><img src="<?= base_url('assets/images/profile/'.$imagegurutujuan) ?>"height="100px"></td>
+      <td>&nbsp;&nbsp;</td>
+      <td valign="top">        <h3 class="box-title">
+        Tujuan : <?= $namagurutujuan;?><br>
+        Tahun : <?= $tahunpenilaian ?><br>
+        Bulan : <?= getbulanindo($bulanpenilaian) ?>
+        </h3></td></tr>
+      </table>       
       </div>
       <div class="box-body">
         <div class="table-responsive">

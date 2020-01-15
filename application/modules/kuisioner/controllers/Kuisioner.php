@@ -51,6 +51,7 @@ class Kuisioner extends CI_Controller
    $data['usertujuan'] = $this->db->get_where('user', ['id' =>
    $tujuan_id])->row_array();
    $data['namagurutujuan']=$data['usertujuan']['name'];
+   $data['imagegurutujuan']=$data['usertujuan']['image'];
    $role_id=$data['user']['role_id'];
    $data['role_id']=$data['user']['role_id'];
    $data['user_asal']= $data['user']['id'];

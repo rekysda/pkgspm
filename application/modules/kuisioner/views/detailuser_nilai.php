@@ -22,8 +22,11 @@
         <h3 class="box-title">List Penilaian , Tahun : <?= $tahunpenilaian ?>, Bulan : <?= getbulanindo($bulanpenilaian) ?></h3>
       </div>
       <div class="box-body">
-      <div class="col-lg-2">
-<img src="<?= base_url('./assets/images/profile/'.$imagegurutujuan) ?>"height="150px">
+      <div class="col-lg-4">
+      
+<?php $imageuser = $userasal['image'];?>
+<img src="<?= base_url('./assets/images/profile/'.$imageuser) ?>"height="200px"><br>
+<h4><?= $userasal['name'];?></h4>
 </div>
           <table class="table table-hover">
             <thead>
@@ -33,7 +36,7 @@
                 <th scope="col">Action</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody> 
               <?php $i = 1; ?>
               <?php foreach ($listuserpenilai as $dt) : ?>
                 <tr>

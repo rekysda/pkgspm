@@ -268,7 +268,8 @@ class Kuisioner extends CI_Controller
     $this->load->model('Kuisioner_model', 'Kuisioner_model');
 
     $data['listuserpenilai'] = $this->Kuisioner_model->get_listuserpenilai($id);
-    $data['user_asal']=$data['user']['id'];
+    $data['userasal'] = $this->db->get_where('user', ['id' =>
+    $id])->row_array();
     $this->load->view('themes/backend/header', $data);
     $this->load->view('themes/backend/sidebar', $data);
     $this->load->view('themes/backend/topbar', $data);
@@ -276,7 +277,7 @@ class Kuisioner extends CI_Controller
     $this->load->view('themes/backend/footer');
     $this->load->view('themes/backend/footerajax');
     
-  }
+  } 
 
   public function hapus_nilaiuser($id,$user_tujuan)
   {

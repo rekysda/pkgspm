@@ -47,6 +47,7 @@
 		font-size: 24px;
 	}
 </style>
+<h2 align="center"><?= $site_description; ?></h2>
 <b> <?= $title; ?></b>
 <b class="box-title">Guru : <?= $namagurutujuan;?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= getbulanindo($bulanpenilaian) ?></b>
 <table><tr><td valign="top">

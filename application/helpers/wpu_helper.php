@@ -455,6 +455,18 @@ function get_jumlahnilaiguru_role($user_tujuan,$kategori_id,$role_id,$tahunpenil
     $ci->db->where('bulanpenilaian', $bulanpenilaian);
     return $ci->db->get()->row()->value;
 }
+function get_jumlahnilaiguru_role2($user_tujuan,$role_id,$tahunpenilaian,$bulanpenilaian)
+{
+    $ci = get_instance();
+    $ci->db->select('sum(jawaban) as value');
+    $ci->db->from('bank_penilaian');
+    $ci->db->where('user_tujuan', $user_tujuan);
+    $ci->db->where('role_id', $role_id);
+    $ci->db->where('user_asal<>', $user_tujuan);
+    $ci->db->where('tahunpenilaian', $tahunpenilaian);
+    $ci->db->where('bulanpenilaian', $bulanpenilaian);
+    return $ci->db->get()->row()->value;
+}
 function get_jumlahsoalguru_role($user_tujuan,$kategori_id,$role_id,$tahunpenilaian,$bulanpenilaian)
 {
     $ci = get_instance();
@@ -462,6 +474,18 @@ function get_jumlahsoalguru_role($user_tujuan,$kategori_id,$role_id,$tahunpenila
     $ci->db->from('bank_penilaian');
     $ci->db->where('user_tujuan', $user_tujuan);
     $ci->db->where('kategori_id', $kategori_id);
+    $ci->db->where('role_id', $role_id);
+    $ci->db->where('user_asal<>', $user_tujuan);
+    $ci->db->where('tahunpenilaian', $tahunpenilaian);
+    $ci->db->where('bulanpenilaian', $bulanpenilaian);
+    return $ci->db->get()->row()->value;
+}
+function get_jumlahsoalguru_role2($user_tujuan,$role_id,$tahunpenilaian,$bulanpenilaian)
+{
+    $ci = get_instance();
+    $ci->db->select('count(id) as value');
+    $ci->db->from('bank_penilaian');
+    $ci->db->where('user_tujuan', $user_tujuan);
     $ci->db->where('role_id', $role_id);
     $ci->db->where('user_asal<>', $user_tujuan);
     $ci->db->where('tahunpenilaian', $tahunpenilaian);
@@ -487,6 +511,29 @@ function get_jumlahsoalguru_rolesendiri($user_tujuan,$kategori_id,$tahunpenilaia
     $ci->db->from('bank_penilaian');
     $ci->db->where('user_tujuan', $user_tujuan);
     $ci->db->where('kategori_id', $kategori_id);
+    $ci->db->where('user_asal', $user_tujuan);
+    $ci->db->where('tahunpenilaian', $tahunpenilaian);
+    $ci->db->where('bulanpenilaian', $bulanpenilaian);
+    return $ci->db->get()->row()->value;
+}
+
+function get_jumlahnilaiguru_rolesendiri2($user_tujuan,$tahunpenilaian,$bulanpenilaian)
+{
+    $ci = get_instance();
+    $ci->db->select('sum(jawaban) as value');
+    $ci->db->from('bank_penilaian');
+    $ci->db->where('user_tujuan', $user_tujuan);
+    $ci->db->where('user_asal', $user_tujuan);
+    $ci->db->where('tahunpenilaian', $tahunpenilaian);
+    $ci->db->where('bulanpenilaian', $bulanpenilaian);
+    return $ci->db->get()->row()->value;
+}
+function get_jumlahsoalguru_rolesendiri2($user_tujuan,$tahunpenilaian,$bulanpenilaian)
+{
+    $ci = get_instance();
+    $ci->db->select('count(id) as value');
+    $ci->db->from('bank_penilaian');
+    $ci->db->where('user_tujuan', $user_tujuan);
     $ci->db->where('user_asal', $user_tujuan);
     $ci->db->where('tahunpenilaian', $tahunpenilaian);
     $ci->db->where('bulanpenilaian', $bulanpenilaian);

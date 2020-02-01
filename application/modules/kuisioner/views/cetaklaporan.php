@@ -47,20 +47,46 @@
 		font-size: 24px;
 	}
 </style>
+
+<h2 align="center"><?= $site_description; ?></h2>
 <h4> <?= $title; ?>, Tahun : <?= $tahunpenilaian ?>, Bulan : <?= getbulanindo($bulanpenilaian) ?></h4>
 <table id="tablestd">
               <tr>
                 <td >#</td>
-                <td >User</td>
-                <td >Penilaian</td>
+				<td >Nama Guru</td>
+				<td >DiriSendiri</td>
+				<?php foreach ($list_role as $dtr) : ?>
+					<td>
+						<?= $dtr['role'] ?></td>
+						<?php endforeach; ?>
+			<td >Penilaian</td>
               </tr>
               <?php $i = 1; ?>
-              <?php foreach ($listuser as $dt) : ?>
+			  <?php foreach ($listuser as $dt) : ?>
+				<?php 
+				$jumlahjawaban=get_jumlahnilaiguru($dt['id'],$tahunpenilaian,$bulanpenilaian); 
+				if($jumlahjawaban){
+				?>
                 <tr>
                   <td><?= $i; ?></td>
-                  <td><?= $dt['username']; ?></td>
+				  <td><?= $dt['name']; ?></td>
+				  <?php                 
+                  $jumlahjawabanrolesendiri=get_jumlahnilaiguru_rolesendiri2($dt['id'],$tahunpenilaian,$bulanpenilaian);
+                  $jumlahsoalrolesendiri=get_jumlahsoalguru_rolesendiri2($dt['id'],$tahunpenilaian,$bulanpenilaian);
+                  $jumlahmaksnilairolesendiri=$jumlahsoalrolesendiri*4;
+                  $penilaianrolesendiri = round(($jumlahjawabanrolesendiri/$jumlahmaksnilairolesendiri)*100);
+                  ?>
+                  <td><?= $penilaianrolesendiri ?></td>
+				  <?php foreach ($list_role as $dtr) : ?>
+                    <?php                 
+                  $jumlahjawabanrole=get_jumlahnilaiguru_role2($dt['id'],$dtr['id'],$tahunpenilaian,$bulanpenilaian);
+                  $jumlahsoalrole=get_jumlahsoalguru_role2($dt['id'],$dtr['id'],$tahunpenilaian,$bulanpenilaian);
+                  $jumlahmaksnilairole=$jumlahsoalrole*4;
+                  $penilaianrole = round(($jumlahjawabanrole/$jumlahmaksnilairole)*100);
+                  ?>
+                  <td><?= $penilaianrole ?></td>
+                  <?php endforeach; ?>
                   <td>
-
                   <?php 
                   $jumlahjawaban=get_jumlahnilaiguru($dt['id'],$tahunpenilaian,$bulanpenilaian);
                   $jumlahsoal=get_jumlahsoalguru($dt['id'],$tahunpenilaian,$bulanpenilaian);
@@ -69,7 +95,8 @@
                   ?>
                   <?= ($penilaian) ?>
                   </td>
-                </tr>
+				</tr>
                 <?php $i++; ?>
+				<?php } ?>
               <?php endforeach; ?>
           </table>

@@ -131,6 +131,10 @@ class Kuisioner extends CI_Controller
  public function cetaklaporan()
  {
    $data['title'] = 'Laporan Penilaian Guru';
+   $data['site_description'] = $this->db->get_where('options', ['name' =>
+   'site_description'])->row_array();
+   $data['site_description'] = $data['site_description']['value'];
+   
    $data['user'] = $this->db->get_where('user', ['email' =>
    $this->session->userdata('email')])->row_array();
    $tahunpenilaian = $this->db->get_where('options', ['name' =>
@@ -145,6 +149,7 @@ class Kuisioner extends CI_Controller
    $data['listuser'] = $this->Kuisioner_model->get_listuser($iduserasal);
    $data['user_asal']=$data['user']['id'];
  //  $this->load->view('cetaklaporan', $data);
+ $data['list_role'] = $this->Kuisioner_model->get_listrole();
 
    $html = $this->load->view('cetaklaporan', $data, true);
     // create pdf using dompdf
@@ -185,6 +190,9 @@ class Kuisioner extends CI_Controller
  public function cetaklaporandetail($usertujuan_id)
  {
    $data['title'] = 'Laporan Penilaian Guru Detail';
+   $data['site_description'] = $this->db->get_where('options', ['name' =>
+   'site_description'])->row_array();
+   $data['site_description'] = $data['site_description']['value'];
    $data['user'] = $this->db->get_where('user', ['email' =>
    $this->session->userdata('email')])->row_array();
    $tahunpenilaian = $this->db->get_where('options', ['name' =>

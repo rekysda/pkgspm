@@ -311,12 +311,14 @@ class Admin extends CI_Controller
             $upload_image = $_FILES['image']['name'];
 
             if ($upload_image) {
-                $config['allowed_types'] = 'gif|jpg|png|jpeg';
-                $config['max_size']     = '10240';
-                $config['upload_path'] = 'assets/images/logoslip/';
-                $config['file_name'] = "header.jpg";
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('image')) {
+                unlink(FCPATH . 'assets/images/logoslip/header.jpg');
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size']     = '10240';
+            $config['upload_path'] = 'assets/images/logoslip/';
+            $config['file_name'] = "header.jpg";
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('image')) {
+            
             $new_image = $this->upload->data('file_name');  
             //Compress Image
             $config['image_library']='gd2';
@@ -325,7 +327,7 @@ class Admin extends CI_Controller
             $config['maintain_ratio']= FALSE;
             $config['quality']= '100%';
             $config['width']= 852;
-            $config['height']= 174;
+            $config['height']= 'auto';
             $config['new_image']= './assets/images/logoslip/'.$new_image;
             $this->load->library('image_lib', $config);
             $this->image_lib->resize();

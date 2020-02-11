@@ -24,7 +24,7 @@
       </div>
       <div class="box-body">
 
-        <form class="form-horizontal" method="post" action="<?= base_url('admin/websetting'); ?>">
+        <form class="form-horizontal" method="post" action="<?= base_url('admin/websetting'); ?>"enctype="multipart/form-data">
           <div class="box-body">
             <div class="form-group">
               <label class="col-sm-2 control-label">Site Title</label>
@@ -119,6 +119,17 @@
                 </select>
               </div>
             </div>
+
+          <div class="form-group">
+          <label for="name">Photo</label><br>
+          <img src="<?= base_url('assets/images/logoslip/header.jpg')?>" class="img-thumbnail">
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <input type="file" class="custom-file-input" id="image" name="image">
+            </div>
+          </div>
+
           </div>
           <!-- /.box-body -->
           <div class="box-footer">

@@ -44,6 +44,7 @@
                   <tr>
                     <th>#</th>
                     <th>Kategori</th>
+                    <th>Gambar</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -52,7 +53,8 @@
                   <?php foreach ($kategori as $dt) : ?>
                     <tr>
                       <td><?= $i; ?></td>
-                      <td><?= $dt['kategori']; ?></td>                    
+                      <td><?= $dt['kategori']; ?></td>   
+                      <td><img src="<?= base_url('assets/images/banksoal/') . $dt['image']; ?> " class="img-thumbnail"width="50"></td>                  
                       <td>
                         <a href="<?= base_url('banksoal/edit_kategori/' . $dt['id']); ?>" class="btn btn-info btn-xs">Edit</a>
                         <a href="<?= base_url('banksoal/hapus_kategori/' . $dt['id']); ?>" class="btn btn-danger btn-xs" onclick="return confirm('Anda yakin ? data tidak dapat dikembalikan lagi...');">Delete</a>

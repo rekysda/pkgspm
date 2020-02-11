@@ -197,10 +197,10 @@ class Kuisioner extends CI_Controller
    $this->session->userdata('email')])->row_array();
    $tahunpenilaian = $this->db->get_where('options', ['name' =>
    'tahunpenilaian'])->row_array();
-  $data['tahunpenilaian']=$tahunpenilaian['value'];
+   $data['tahunpenilaian']=$tahunpenilaian['value'];
    $bulanpenilaian = $this->db->get_where('options', ['name' =>
    'bulanpenilaian'])->row_array();
-  $data['bulanpenilaian']=$bulanpenilaian['value'];
+   $data['bulanpenilaian']=$bulanpenilaian['value'];
 
    $data['usertujuan'] = $this->db->get_where('user', ['id' =>
    $usertujuan_id])->row_array();
@@ -208,6 +208,8 @@ class Kuisioner extends CI_Controller
    $data['user_asal']=$data['user']['id'];
    $data['namagurutujuan']=$data['usertujuan']['name'];
    $data['imagegurutujuan']=$data['usertujuan']['image'];
+   $data['mapelgurutujuan']=$data['usertujuan']['mapel'];
+   $data['masakerjagurutujuan']=$data['usertujuan']['masakerja'];
    $this->load->model('Kuisioner_model', 'Kuisioner_model');
    $data['listkategori'] = $this->Kuisioner_model->get_listkategoriuser($usertujuan_id);
    $data['list_role'] = $this->Kuisioner_model->get_listrole();
@@ -219,7 +221,36 @@ class Kuisioner extends CI_Controller
  $orientation = 'potrait';
  pdf_create($html, $filename, $paper, $orientation);
  }
+ public function cetaklaporandetailprint($usertujuan_id)
+ {
+  $data['title'] = 'Laporan Penilaian Guru Detail';
+  $data['site_description'] = $this->db->get_where('options', ['name' =>
+  'site_description'])->row_array();
+  $data['site_description'] = $data['site_description']['value'];
+  $data['user'] = $this->db->get_where('user', ['email' =>
+  $this->session->userdata('email')])->row_array();
+  $tahunpenilaian = $this->db->get_where('options', ['name' =>
+  'tahunpenilaian'])->row_array();
+  $data['tahunpenilaian']=$tahunpenilaian['value'];
+  $bulanpenilaian = $this->db->get_where('options', ['name' =>
+  'bulanpenilaian'])->row_array();
+  $data['bulanpenilaian']=$bulanpenilaian['value'];
 
+  $data['usertujuan'] = $this->db->get_where('user', ['id' =>
+  $usertujuan_id])->row_array();
+  $data['user_tujuan']=$data['usertujuan']['id'];
+  $data['user_asal']=$data['user']['id'];
+  $data['namagurutujuan']=$data['usertujuan']['name'];
+  $data['imagegurutujuan']=$data['usertujuan']['image'];
+  $data['mapelgurutujuan']=$data['usertujuan']['mapel'];
+  $data['masakerjagurutujuan']=$data['usertujuan']['masakerja'];
+  $this->load->model('Kuisioner_model', 'Kuisioner_model');
+  $data['listkategori'] = $this->Kuisioner_model->get_listkategoriuser($usertujuan_id);
+  $data['list_role'] = $this->Kuisioner_model->get_listrole();
+  $this->load->view('themes/backend/headerprint', $data);
+  $this->load->view('cetaklaporandetailprint', $data);
+  
+ }
  public function hapus()
  {
    $data['title'] = 'Hapus Penilaian';

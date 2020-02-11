@@ -64,6 +64,20 @@
               <?= form_error('name', '<span class="help-block">', '</small>'); ?>
             </div>
           </div>
+          <div class="form-group <?php echo form_error('mapel') ? 'has-error' : '' ?>">
+            <label for="name" class="col-sm-2 control-label">Mata Pelajaran<span class="text-red">*</span></label>
+            <div class="col-sm-10">
+              <input class="form-control <?php echo form_error('mapel') ? 'is-invalid' : '' ?>" type="text" name="mapel"  value="<?= $getuserlogin['mapel']; ?>" />
+              <?= form_error('mapel', '<span class="help-block">', '</small>'); ?>
+            </div>
+          </div>
+          <div class="form-group <?php echo form_error('masakerja') ? 'has-error' : '' ?>">
+            <label for="masakerja" class="col-sm-2 control-label">Masa Kerja<span class="text-red">*</span></label>
+            <div class="col-sm-10">
+              <input class="form-control <?php echo form_error('masakerja') ? 'is-invalid' : '' ?>" type="text" name="masakerja" value="<?= $getuserlogin['masakerja']; ?>" />
+              <?= form_error('masakerja', '<span class="help-block">', '</small>'); ?>
+            </div>
+          </div>          
           <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Photo</label>
             <div class="col-sm-10">

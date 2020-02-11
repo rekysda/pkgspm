@@ -71,7 +71,7 @@
                   </td>
                   </tr>
                   <?php $rata= round($total/$i); ?>
-                  <?php $i++; ?>
+                  <?php $i++; ?> 
               <?php endforeach; ?>
               <tr>
               <?php foreach ($list_role as $dtr) : ?>
@@ -81,6 +81,8 @@
     </table>
     <a href="<?= base_url('kuisioner/laporan')?>"target="new"class="btn btn-success">Kembali</a>&nbsp;&nbsp;
     <a href="<?= base_url('kuisioner/cetaklaporandetail/'.$dt['user_tujuan'])?>"target="new"class="btn btn-primary">Cetak</a>
+    <a href="<?= base_url('kuisioner/cetaklaporandetailprint/'.$dt['user_tujuan'])?>"target="new"class="btn btn-warning">CetakPrint</a>
+
         </div>
 
 </div>

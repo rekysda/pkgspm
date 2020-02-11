@@ -12,7 +12,7 @@ class Banksoal extends CI_Controller
   }
   // kategori
  public function kategori()
- {
+ { 
    $data['title'] = 'Kategori';
    $data['user'] = $this->db->get_where('user', ['email' =>
    $this->session->userdata('email')])->row_array();
@@ -52,6 +52,46 @@ class Banksoal extends CI_Controller
     $this->load->view('themes/backend/footer');
     $this->load->view('themes/backend/footerajax');
     }else{
+      // Jika Ada Gambar
+      $upload_image = $_FILES['image']['name'];
+      $old_image = $this->input->post('old_image');
+      
+      if ($upload_image) {
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size']     = '10240';
+        $config['upload_path'] = 'assets/images/banksoal/';
+        $config['file_name'] = date('ymdhis');
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('image')) {
+          
+            if ($old_image != 'default.jpg') {
+                unlink(FCPATH . 'assets/images/banksoal/' . $old_image);
+            }
+            $new_image = $this->upload->data('file_name');
+            
+            $this->db->set('image', $new_image);
+            $this->db->where('id', $id);
+            $this->db->update('bank_kategori');
+            //Compress Image
+             $config['image_library']='gd2';
+             $config['source_image']='./assets/images/banksoal/'.$new_image;
+             $config['create_thumb']= FALSE;
+             $config['maintain_ratio']= FALSE;
+             $config['quality']= '100%';
+             $config['width']= 100;
+             $config['height']= 100;
+             $config['new_image']= './assets/images/banksoal/'.$new_image;
+             $this->load->library('image_lib', $config);
+             $this->image_lib->resize();     
+
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role"alert">
+    Upload Image!</div>');
+        } else {
+            echo  $this->upload->display_errors();
+        }
+    }
+
+
       $data = [
         'kategori' => $this->input->post('kategori')
          ];

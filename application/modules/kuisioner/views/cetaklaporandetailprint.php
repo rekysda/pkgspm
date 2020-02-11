@@ -1,65 +1,21 @@
-<style>
-	body {
-		font-size: 12px;
-		color: black;
-	}
 
-	table#tablestd {
-		border-width: 1px;
-		border-style: solid;
-		border-color: #D8D8D8;
-		border-collapse: collapse;
-		margin: 10px 0px;
-        font-size: 12px;
-	}
-
-	table#tablestd td {
-		padding: 0.5em;
-		color: #000;
-		vertical-align: top;
-		border-width: 0px;
-		padding: 4px;
-		border: 1px solid #000;
-
-	}
-
-	table#tablemodul1 {
-		border-width: 1px;
-		border-style: solid;
-		border-color: #000;
-		border-collapse: collapse;
-		margin: 10px 0px;
-	}
-
-	table#tablemodul1 td {
-		padding: 1px 6px 2px 6px;
-		border: 1px solid #000;
-
-	}
-
-	table#tablemodul1 th {
-		padding: 1px 6px 2px 6px;
-		border: 1px solid #000;
-
-	}
-
-	h1 {
-		font-size: 24px;
-	}
-</style>
 <img src="<?= base_url('assets/images/logoslip/header.jpg') ?>"width="100%">
 <table><tr><td valign="top">
 <table>
 <tr><td>
 <b class="box-title">
-<img src="<?= base_url('assets/images/profile/'.$imagegurutujuan) ?>"height="100px">
+<img src="<?= base_url('assets/images/profile/'.$imagegurutujuan) ?>"height="70px">
 </b></td>
+<td width='50px'>
+</td>
 <td>
+<b>
 Guru : <?= $namagurutujuan;?><br>
 Mata Pelajaran : <?= $mapelgurutujuan?><br>
 Masa Kerja : <?= $masakerjagurutujuan?><br>
 Tahun : <?= $tahunpenilaian ?><br>
 Bulan : <?= getbulanindo($bulanpenilaian) ?><br>
+</b>
 </td></tr>
 </table>
 </td>
@@ -80,8 +36,9 @@ Bulan : <?= getbulanindo($bulanpenilaian) ?><br>
               <?php foreach ($listkategori as $dt) : ?>
                 <tr>
                   <td scope="row"><?= $i; ?></td>
-                  <td>         
-                  
+                  <td align='center'>         
+                  <?php $image=$dt['image'] ?>
+                  <img src="<?= base_url('assets/images/banksoal/'.$image) ?>"height="30px"><br>
                   <?= $dt['kategori']; ?>
                   </td>
                   <?php                 

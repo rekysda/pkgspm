@@ -176,6 +176,8 @@ class Admin extends CI_Controller
             $name = $this->input->post('name');
             $email = $this->input->post('email');
             $password = $this->input->post('password');
+            $mapel = $this->input->post('mapel');
+            $masakerja = $this->input->post('masakerja');
             $role_id = $this->input->post('role_id');
             $is_active = $this->input->post('is_active');
             // Jika Ada Gambar
@@ -219,6 +221,8 @@ class Admin extends CI_Controller
             }
             $this->db->set('role_id', $role_id);
             $this->db->set('name', $name);
+            $this->db->set('mapel', $mapel);
+            $this->db->set('masakerja', $masakerja);
             $this->db->set('is_active', $is_active);
             $this->db->where('email', $email);
             $this->db->update('user');
@@ -303,6 +307,35 @@ class Admin extends CI_Controller
                 foreach ($_POST['option'] as $key => $val) {
                     $this->db->query("UPDATE `options` SET value = '$val' WHERE name = '$key'");
                 }
+                // Jika Ada Gambar
+            $upload_image = $_FILES['image']['name'];
+
+            if ($upload_image) {
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['max_size']     = '10240';
+                $config['upload_path'] = 'assets/images/logoslip/';
+                $config['file_name'] = "header.jpg";
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('image')) {
+            $new_image = $this->upload->data('file_name');  
+            //Compress Image
+            $config['image_library']='gd2';
+            $config['source_image']='./assets/images/logoslip/'.$new_image;
+            $config['create_thumb']= FALSE;
+            $config['maintain_ratio']= FALSE;
+            $config['quality']= '100%';
+            $config['width']= 852;
+            $config['height']= 174;
+            $config['new_image']= './assets/images/logoslip/'.$new_image;
+            $this->load->library('image_lib', $config);
+            $this->image_lib->resize();
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role"alert">
+            Upload Image!</div>');
+                } else {
+                    echo  $this->upload->display_errors();
+                }
+            }
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role"alert">Web setting updated.</div>');
                 redirect('admin/websetting');
             }

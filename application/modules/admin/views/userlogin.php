@@ -67,6 +67,20 @@
               <?= form_error('name', '<span class="help-block">', '</small>'); ?>
             </div>
           </div>
+          <div class="form-group <?php echo form_error('mapel') ? 'has-error' : '' ?>">
+            <label for="name" class="col-sm-2 control-label">Mata Pelajaran<span class="text-red">*</span></label>
+            <div class="col-sm-10">
+              <input class="form-control <?php echo form_error('mapel') ? 'is-invalid' : '' ?>" type="text" name="mapel" value="<?= set_value('mapel'); ?>" />
+              <?= form_error('mapel', '<span class="help-block">', '</small>'); ?>
+            </div>
+          </div>
+          <div class="form-group <?php echo form_error('masakerja') ? 'has-error' : '' ?>">
+            <label for="masakerja" class="col-sm-2 control-label">Masa Kerja (Tahun)<span class="text-red">*</span></label>
+            <div class="col-sm-10">
+              <input class="form-control <?php echo form_error('masakerja') ? 'is-invalid' : '' ?>" type="text" name="masakerja" value="<?= set_value('masakerja'); ?>" />
+              <?= form_error('masakerja', '<span class="help-block">', '</small>'); ?>
+            </div>
+          </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <div class="checkbox">
@@ -101,7 +115,8 @@
                 <th>#</th>
                 <th>UserName</th>
                 <th>Full Name</th>
-                <th>Email</th>
+                <th>Mapel</th>
+                <th>MasaKerja</th>
                 <th>Role</th>
                 <th>Is Active</th>
                 <th>Image</th>
@@ -116,7 +131,8 @@
                   <th><?= $i; ?></th>
                   <td><?= $u['username']; ?></td>
                   <td><?= $u['name']; ?></td>
-                  <td><?= $u['email']; ?></td>
+                  <td><?= $u['mapel']; ?></td>
+                  <td><?= $u['masakerja']; ?></td>
                   <td><?= $u['role']; ?></td>
                   <td><?= $is_active; ?></td>
                   <td><img width="40" src="<?= base_url('assets/images/profile/') . $u['image']; ?>"></td>

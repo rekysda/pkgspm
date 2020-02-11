@@ -1,5 +1,9 @@
 
-<img src="<?= base_url('assets/images/logoslip/header.jpg') ?>"width="100%">
+<img src="<?= base_url('assets/images/logoslip/header.jpg') ?>">
+<hr>
+<h4>PENILAIAN KINERJA GURU SMAK BHAKTI SAMUDERA<br>
+Bulan : <?= getbulanindo($bulanpenilaian) ?><br>
+Tahun : <?= $tahunpenilaian ?></h4>
 <table><tr><td valign="top">
 <table>
 <tr><td>

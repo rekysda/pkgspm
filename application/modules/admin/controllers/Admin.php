@@ -326,8 +326,8 @@ class Admin extends CI_Controller
             $config['create_thumb']= FALSE;
             $config['maintain_ratio']= FALSE;
             $config['quality']= '100%';
-            $config['width']= 852;
-            $config['height']= 'auto';
+            $config['width']= 500;
+            $config['height']= 100;
             $config['new_image']= './assets/images/logoslip/'.$new_image;
             $this->load->library('image_lib', $config);
             $this->image_lib->resize();

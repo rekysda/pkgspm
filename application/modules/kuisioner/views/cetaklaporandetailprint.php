@@ -81,3 +81,4 @@ Bulan : <?= getbulanindo($bulanpenilaian) ?><br>
                   <?php endforeach; ?>  
               <td colspan="3"align="right"><b>Rata</b></td><td><b><?= $rata; ?></b></td></tr>
     </table>
+    <div align='right'>Surabaya, <?= $tglskrg ?></div>

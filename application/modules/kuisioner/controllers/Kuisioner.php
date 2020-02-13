@@ -235,7 +235,7 @@ class Kuisioner extends CI_Controller
   $bulanpenilaian = $this->db->get_where('options', ['name' =>
   'bulanpenilaian'])->row_array();
   $data['bulanpenilaian']=$bulanpenilaian['value'];
-
+  $data['tglskrg']=date('d/m/Y');
   $data['usertujuan'] = $this->db->get_where('user', ['id' =>
   $usertujuan_id])->row_array();
   $data['user_tujuan']=$data['usertujuan']['id'];

@@ -32,7 +32,7 @@
       <!-- /.col -->
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-red"><i class="fa fa-fw fa-users"></i></span>
+          <span class="info-box-icon bg-red"><i class="fa fa-fw fa-user"></i></span>
 
           <div class="info-box-content">
             <span class="info-box-text">Siswa</span>
@@ -52,10 +52,39 @@
       <!-- /.col -->
     </div>
     <!-- /.row -->
+ <!-- /.box -->
+             <!-- BAR CHART -->
+             <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Bar Chart</h3>
 
-    </div>
-    <!-- /.box -->
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+
+          </div>
+
+          <!-- BAR CHART -->
   </section>
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+ 
+<script src="<?php echo base_url().'assets/vendors/morris/js/jquery.min.js'?>"></script>
+    <script src="<?php echo base_url().'assets/vendors/morris/js/raphael-min.js'?>"></script>
+    <script src="<?php echo base_url().'assets/vendors/morris/js/morris.min.js'?>"></script>
+    <script>
+        Morris.Bar({
+          element: 'graph',
+          data: <?php echo $dataaccount;?>,
+          xkey: 'year',
+          ykeys: ['purchase', 'sale', 'profit'],
+          labels: ['Purchase', 'Sale', 'Profit']
+        });
+        Morris.Donut({
+          element: 'donuts',
+          data: <?php echo $dataaccount2;?>
+        });
+    </script>

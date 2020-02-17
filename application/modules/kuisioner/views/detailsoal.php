@@ -52,7 +52,12 @@
                   <th scope="row"><?= $i; ?></th>
                   <td><?= $dt['soal']; ?></td>
                   <td>
-                  
+                  <?php
+                  $soal_id=$dt['id'];
+                  ?>
+                  <?=
+                  get_jumlahnilai_usertujuan($soal_id,$user_tujuan,$tahunpenilaian,$bulanpenilaian);
+                  ?>
                   </td>
                 </tr>
                 <?php } ?>

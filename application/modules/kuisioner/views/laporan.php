@@ -50,7 +50,8 @@
                   ?>
                   <?= ($penilaian) ?>
                   </td>
-                  <td><a href='<?= base_url('kuisioner/detail/'.$dt['id']) ?>' class='btn btn-success'>Detail</a></td>
+                  <td><a href='<?= base_url('kuisioner/detailsoal/'.$dt['id']) ?>' class='btn btn-primary'>Detail perSoal</a>
+                  <a href='<?= base_url('kuisioner/detail/'.$dt['id']) ?>' class='btn btn-success'>Kategori</a></td>
                 </tr>
                 <?php $i++; ?>
               <?php endforeach; ?>

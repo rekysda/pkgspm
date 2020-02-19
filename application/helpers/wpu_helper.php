@@ -551,3 +551,14 @@ function get_jumlahnilai_usertujuan($soal_id,$user_tujuan,$tahunpenilaian,$bulan
     $ci->db->where('bulanpenilaian', $bulanpenilaian);
     return $ci->db->get()->row()->value;
 }
+function get_jumlahnilaicount_usertujuan($soal_id,$user_tujuan,$tahunpenilaian,$bulanpenilaian)
+{
+    $ci = get_instance();
+    $ci->db->select('count(jawaban) as value');
+    $ci->db->from('bank_penilaian');
+    $ci->db->where('soal_id', $soal_id);
+    $ci->db->where('user_tujuan', $user_tujuan);
+    $ci->db->where('tahunpenilaian', $tahunpenilaian);
+    $ci->db->where('bulanpenilaian', $bulanpenilaian);
+    return $ci->db->get()->row()->value;
+}

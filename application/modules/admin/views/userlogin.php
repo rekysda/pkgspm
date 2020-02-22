@@ -37,7 +37,7 @@
           <div class="form-group <?= form_error('email') ? 'has-error' : '' ?>">
             <label for="name" class="col-sm-2 control-label">Email <span class="text-red">*</span></label>
             <div class="col-sm-10">
-              <input class="form-control" type="text" name="email" value="<?= set_value('email'); ?>" />
+              <input class="form-control" type="text" name="email" value="-" />
               <?= form_error('email', '<span class="help-block">', '</small>'); ?>
             </div>
           </div>
@@ -54,7 +54,7 @@
               <select name="role_id" id="role_id" class="form-control <?= form_error('role_id') ? 'is-invalid' : '' ?>">
                 <option value="">== Role ==</option>
                 <?php foreach ($role as $r) : ?>
-                  <option value="<?= $r['id']; ?>" <?= $r['id'] == $role_idv ? ' selected="selected"' : ''; ?>><?= $r['role']; ?></option>
+                  <option value="<?= $r['id']; ?>" <?= $r['id'] == '3' ? ' selected="selected"' : ''; ?>><?= $r['role']; ?></option>
                 <?php endforeach; ?>
               </select>
               <?= form_error('role_id', '<span class="help-block">', '</small>'); ?>
@@ -68,14 +68,14 @@
             </div>
           </div>
           <div class="form-group <?php echo form_error('mapel') ? 'has-error' : '' ?>">
-            <label for="name" class="col-sm-2 control-label">Mata Pelajaran<span class="text-red">*</span></label>
+            <label for="name" class="col-sm-2 control-label">Mata Pelajaran<span class="text-red"></span></label>
             <div class="col-sm-10">
               <input class="form-control <?php echo form_error('mapel') ? 'is-invalid' : '' ?>" type="text" name="mapel" value="<?= set_value('mapel'); ?>" />
               <?= form_error('mapel', '<span class="help-block">', '</small>'); ?>
             </div>
           </div>
           <div class="form-group <?php echo form_error('masakerja') ? 'has-error' : '' ?>">
-            <label for="masakerja" class="col-sm-2 control-label">Masa Kerja (Tahun)<span class="text-red">*</span></label>
+            <label for="masakerja" class="col-sm-2 control-label">Masa Kerja (Tahun)<span class="text-red"></span></label>
             <div class="col-sm-10">
               <input class="form-control <?php echo form_error('masakerja') ? 'is-invalid' : '' ?>" type="text" name="masakerja" value="<?= set_value('masakerja'); ?>" />
               <?= form_error('masakerja', '<span class="help-block">', '</small>'); ?>

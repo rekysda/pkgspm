@@ -335,5 +335,118 @@ class Kuisioner extends CI_Controller
     $this->session->set_flashdata('message', '<div class="alert alert-success" role"alert">Data deleted !</div>');
     redirect('kuisioner/hapus');
   }
+
+  public function detailsoal($tujuan_id)
+ {
+   $data['title'] = 'Laporan';
+   $data['user'] = $this->db->get_where('user', ['email' =>
+   $this->session->userdata('email')])->row_array();
+   $tahunpenilaian = $this->db->get_where('options', ['name' =>
+   'tahunpenilaian'])->row_array();
+  $data['tahunpenilaian']=$tahunpenilaian['value'];
+   $bulanpenilaian = $this->db->get_where('options', ['name' =>
+   'bulanpenilaian'])->row_array();
+  $data['bulanpenilaian']=$bulanpenilaian['value'];
+
+   $this->load->model('Kuisioner_model', 'Kuisioner_model');
+   $iduserasal = $data['user']['id'];
+   $data['usertujuan'] = $this->db->get_where('user', ['id' =>
+   $tujuan_id])->row_array();
+   $data['namagurutujuan']=$data['usertujuan']['name'];
+   $data['imagegurutujuan']=$data['usertujuan']['image'];
+   $role_id=$data['user']['role_id'];
+   $data['role_id']=$data['user']['role_id'];
+   $data['user_asal']= $data['user']['id'];
+   $data['user_tujuan']= $data['usertujuan']['id'];
+   $data['nilairata']='0';
+   if($data['user_asal']<>$data['user_tujuan']){
+   $data['listkategori'] = $this->Kuisioner_model->get_listkategori($role_id);
+   $data['listquestion'] = $this->Kuisioner_model->get_listquestion($role_id);
+   }else{
+    $data['listkategori'] = $this->Kuisioner_model->get_listkategoriall();  
+    $data['listquestion'] = $this->Kuisioner_model->get_listquestionall();
+   }
+   $this->load->view('themes/backend/header', $data);
+   $this->load->view('themes/backend/sidebar', $data);
+   $this->load->view('themes/backend/topbar', $data);
+   $this->load->view('detailsoal', $data);
+   $this->load->view('themes/backend/footer');
+   $this->load->view('themes/backend/footerajax');
+
+ }
+ public function cetaklaporandetailsoalprint($tujuan_id)
+ {
+  $data['title'] = 'Laporan Penilaian Guru Soal';
+  $data['user'] = $this->db->get_where('user', ['email' =>
+  $this->session->userdata('email')])->row_array();
+  $tahunpenilaian = $this->db->get_where('options', ['name' =>
+  'tahunpenilaian'])->row_array();
+ $data['tahunpenilaian']=$tahunpenilaian['value'];
+  $bulanpenilaian = $this->db->get_where('options', ['name' =>
+  'bulanpenilaian'])->row_array();
+ $data['bulanpenilaian']=$bulanpenilaian['value'];
+ $data['tglskrg']=date('d/m/Y');
+  $this->load->model('Kuisioner_model', 'Kuisioner_model');
+  $iduserasal = $data['user']['id'];
+  $data['usertujuan'] = $this->db->get_where('user', ['id' =>
+  $tujuan_id])->row_array();
+  $data['namagurutujuan']=$data['usertujuan']['name'];
+  $data['imagegurutujuan']=$data['usertujuan']['image'];
+  $role_id=$data['user']['role_id'];
+  $data['role_id']=$data['user']['role_id'];
+  $data['user_asal']= $data['user']['id'];
+  $data['user_tujuan']= $data['usertujuan']['id'];
+  $data['nilairata']='0';
+  if($data['user_asal']<>$data['user_tujuan']){
+  $data['listkategori'] = $this->Kuisioner_model->get_listkategori($role_id);
+  $data['listquestion'] = $this->Kuisioner_model->get_listquestion($role_id);
+  }else{
+   $data['listkategori'] = $this->Kuisioner_model->get_listkategoriall();  
+   $data['listquestion'] = $this->Kuisioner_model->get_listquestionall();
+  }
+  $this->load->view('themes/backend/headerprint', $data);
+  $this->load->view('cetaklaporandetailsoalprint', $data);
+  
+ }
+
+ public function cetaklaporandetailsoal($tujuan_id)
+ {
+  $data['title'] = 'Laporan Penilaian Guru Soal';
+  $data['user'] = $this->db->get_where('user', ['email' =>
+  $this->session->userdata('email')])->row_array();
+  $tahunpenilaian = $this->db->get_where('options', ['name' =>
+  'tahunpenilaian'])->row_array();
+ $data['tahunpenilaian']=$tahunpenilaian['value'];
+  $bulanpenilaian = $this->db->get_where('options', ['name' =>
+  'bulanpenilaian'])->row_array();
+ $data['bulanpenilaian']=$bulanpenilaian['value'];
+ $data['tglskrg']=date('d/m/Y');
+  $this->load->model('Kuisioner_model', 'Kuisioner_model');
+  $iduserasal = $data['user']['id'];
+  $data['usertujuan'] = $this->db->get_where('user', ['id' =>
+  $tujuan_id])->row_array();
+  $data['namagurutujuan']=$data['usertujuan']['name'];
+  $data['imagegurutujuan']=$data['usertujuan']['image'];
+  $role_id=$data['user']['role_id'];
+  $data['role_id']=$data['user']['role_id'];
+  $data['user_asal']= $data['user']['id'];
+  $data['user_tujuan']= $data['usertujuan']['id'];
+  $data['nilairata']='0';
+  if($data['user_asal']<>$data['user_tujuan']){
+  $data['listkategori'] = $this->Kuisioner_model->get_listkategori($role_id);
+  $data['listquestion'] = $this->Kuisioner_model->get_listquestion($role_id);
+  }else{
+   $data['listkategori'] = $this->Kuisioner_model->get_listkategoriall();  
+   $data['listquestion'] = $this->Kuisioner_model->get_listquestionall();
+  }
+   //  $this->load->view('cetaklaporandetailsoal', $data);
+ $html = $this->load->view('cetaklaporandetailsoal', $data, true);
+ // create pdf using dompdf
+ $filename = 'cetaklaporandetailsoal_pdf' . date('dmY') . '_' . date('His');
+ $paper = 'F4';
+ $orientation = 'potrait';
+ pdf_create($html, $filename, $paper, $orientation);
+ }
+ 
   //end
 }

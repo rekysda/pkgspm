@@ -80,7 +80,7 @@
               <td colspan="3"align="right"><b>Rata</b></td><td><b><?= $rata; ?></b></td></tr>
     </table>
     <a href="<?= base_url('kuisioner/laporan')?>"target="new"class="btn btn-success">Kembali</a>&nbsp;&nbsp;
-    <a href="<?= base_url('kuisioner/cetaklaporandetail/'.$dt['user_tujuan'])?>"target="new"class="btn btn-primary">Cetak</a>
+    <a href="<?= base_url('kuisioner/cetaklaporandetail/'.$dt['user_tujuan'])?>"target="new"class="btn btn-primary">CetakPDF</a>
     <a href="<?= base_url('kuisioner/cetaklaporandetailprint/'.$dt['user_tujuan'])?>"target="new"class="btn btn-warning">CetakPrint</a>
 
         </div>
@@ -89,7 +89,6 @@
         <!-- /.box-body -->
       </div>
       <!-- /.box -->
-
   </section>
   <!-- /.content -->
 </div>

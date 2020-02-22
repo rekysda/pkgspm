@@ -121,7 +121,7 @@ class Admin extends CI_Controller
         $data['role'] = $this->db->get()->result_array();
  
         $this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[user.username]');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[user.email]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required');
         $this->form_validation->set_rules('password', 'password', 'trim|required');
         $this->form_validation->set_rules('name', 'Full Name', 'required');
         $this->form_validation->set_rules('role_id', 'Role', 'required');
